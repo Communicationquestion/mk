@@ -1,0 +1,17 @@
+#pragma once
+#include<abstraction_path/Abs_Path.h>
+namespace module_path {
+	class ModulePath :public abstraction_path::Abs_path
+	{
+	public:
+		int set_path(std::string _file_path, std::string _CMake_path);
+		void set_include_path(std::string _module);
+		void print_path();
+		void set_src_path();
+	private:
+		std::string src;
+		std::string include;
+	};
+
+
+}
