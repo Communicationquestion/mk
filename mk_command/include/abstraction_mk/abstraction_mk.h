@@ -1,21 +1,14 @@
 #pragma once
 #include<iostream>
 #include<string>
-namespace MkCommand {
-	class Mk_Command
+#include<abstraction_mk/abstraction_mk.h>
+namespace AbstractionMk {
+	class CAbstractionMk
 	{
 	public:
-		Mk_Command();
-		~Mk_Command();
-		int MkRun(std::string _receive_commands);
+		virtual int explain_command(std::string _recive_string) = 0;
+
 	private:
+
 	};
-
-	Mk_Command::Mk_Command()
-	{
-	}
-
-	Mk_Command::~Mk_Command()
-	{
-	}
 }

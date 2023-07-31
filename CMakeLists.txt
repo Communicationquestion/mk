@@ -17,4 +17,5 @@ add_subdirectory ("module_path")
 add_subdirectory ("create_file")
 add_subdirectory ("command_list")
 add_subdirectory ("mk_command")
+add_subdirectory ("Strategy")
 
