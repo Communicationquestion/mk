@@ -5,7 +5,7 @@ namespace CommonCommand {
 	{
 	public:
 		virtual int MkRun() = 0;
-		int explain_command(std::string);
+		virtual int MkRun(std::string _receive_commands) = 0;
 	private:
 
 	};

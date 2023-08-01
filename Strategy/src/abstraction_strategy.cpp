@@ -9,3 +9,10 @@ std::map<std::string, CommonCommand::CCommonCommand*> AbsStratety::CAbsStratry::
 {
 	return name_command;
 }
+
+std::vector<std::string> AbsStratety::CAbsStratry::separate(std::string _commands)
+{
+
+
+	return commands;
+}

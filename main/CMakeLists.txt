@@ -13,6 +13,7 @@ target_link_libraries( main PUBLIC project_path)
 target_link_libraries( main PUBLIC module_path)
 target_link_libraries( main PUBLIC create_file)
 target_link_libraries( main PUBLIC command_list)
+target_link_libraries( main PUBLIC Strategy)
 # TODO: 如有需要，请添加测试并安装目标。
 
 

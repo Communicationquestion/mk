@@ -2,6 +2,7 @@
 
 int MkCommandStrategy::CMKCommandStrategy::execute(std::string _command)
 {
+	std::cout << _command << std::endl;
 	getmap()[_command]->MkRun();
 	return 0;
 }

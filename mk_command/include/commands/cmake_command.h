@@ -4,6 +4,7 @@ class CmakeCommand :public CommonCommand::CCommonCommand
 {
 public:
 	int MkRun();
+	int MkRun(std::string _pars);
 
 private:
 

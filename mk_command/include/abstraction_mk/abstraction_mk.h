@@ -6,7 +6,7 @@ namespace AbstractionMk {
 	class CAbstractionMk
 	{
 	public:
-		virtual int explain_command(std::string _recive_string) = 0;
+		//virtual int explain_command(std::string _recive_string) = 0;
 
 	private:
 
