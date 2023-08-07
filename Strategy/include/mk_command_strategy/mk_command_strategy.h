@@ -1,11 +1,12 @@
 #pragma once
 #include<abstraction_strategy/abstraction_strategy.h>
+#include<vector>
 namespace MkCommandStrategy {
 	class CMKCommandStrategy :public AbsStratety::CAbsStratry
 	{
 	public:
-
-		int execute(std::string _command);
+		void initmap();
+		int execute(std::vector<std::string> v_command);
 	private:
 
 	};

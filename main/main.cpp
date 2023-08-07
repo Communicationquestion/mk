@@ -20,20 +20,26 @@ int main(int argc, char* argv[])
 	//AbsCommand::Abs_Command cmd_test;
 
 	//cmd_test.run_cmd("cmake -help");
-	std::string commands{};
-
-	if (argc < 2)
+	//std::string commands{};
+	std::vector<std::string> v_commands{};
+	if (argc < 2) {
 		printf("error\n");
-	//return 0;
+		return 0;
+	}
 
-	for (int i = 1; i < argc; i++)
-		commands = commands + argv[i];
 
-	std::cout << "log:" << commands << std::endl;
+	for (int i = 1; i < argc; i++) {
+		//commands = commands + argv[i];
+		v_commands.push_back(argv[i]);
+	}
+
+
+	//std::cout << "log:" << commands << std::endl;
 	MkCommandStrategy::CMKCommandStrategy test;
-	test.add("cmake", new CmakeCommand);
+	test.initmap();
+	//test.add("cmake", new CmakeCommand);
 
-	test.execute(commands);
+	test.execute(v_commands);
 
 	return 0;
 }
