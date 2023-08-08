@@ -33,7 +33,6 @@ int main(int argc, char* argv[])
 		v_commands.push_back(argv[i]);
 	}
 
-
 	//std::cout << "log:" << commands << std::endl;
 	MkCommandStrategy::CMKCommandStrategy test;
 	test.initmap();

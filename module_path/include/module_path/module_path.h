@@ -8,6 +8,8 @@ namespace module_path {
 		void set_include_path(std::string _module);
 		void print_path();
 		void set_src_path();
+		std::string get_include_path();
+		std::string get_src_path();
 	private:
 		std::string src;
 		std::string include;

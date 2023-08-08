@@ -2,6 +2,7 @@
 void abstraction_path::Abs_path::set_file_path(std::string _file_path)
 {
 	file_path = get_current_path() + "\\" + _file_path;
+
 }
 void abstraction_path::Abs_path::set_CMake_path(std::string _CMake_path)
 {

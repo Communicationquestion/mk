@@ -3,7 +3,7 @@
 namespace CreateModule {
 	class Create_Module :public abstraction_create::Abs_create {
 	public:
-		int creta_files();
+		int creta_files(std::string _file_name);
 	private:
 
 	};

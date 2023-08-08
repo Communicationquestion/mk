@@ -4,7 +4,7 @@ namespace create_project {
 	class CreateProject :public abstraction_create::Abs_create
 	{
 	public:
-		int creta_files();
+		int creta_files(std::string _file_name);
 	private:
 
 	};

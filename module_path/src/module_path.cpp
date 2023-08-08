@@ -36,3 +36,11 @@ void module_path::ModulePath::print_path()
 	std::cout << include << std::endl;
 	std::cout << src << std::endl;
 }
+std::string module_path::ModulePath::get_include_path()
+{
+	return include;
+}
+std::string module_path::ModulePath::get_src_path()
+{
+	return src;
+}

@@ -3,3 +3,6 @@ add_library(mk_command STATIC ${srcs})
 target_include_directories(mk_command PUBLIC include)
 
 target_link_libraries(mk_command PUBLIC command_list)
+target_link_libraries( mk_command PUBLIC project_path)
+target_link_libraries( mk_command PUBLIC module_path)
+target_link_libraries( mk_command PUBLIC create_file)
