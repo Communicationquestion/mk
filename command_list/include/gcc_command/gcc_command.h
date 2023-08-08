@@ -1,7 +1,7 @@
 #pragma once
 #include<abstraction_command/abstraction_command.h>
 
-namespace GccCommand {
+namespace GccCommands {
 	class CGccCommand : public AbsCommand::Abs_Command
 	{
 	public:

@@ -1,7 +1,7 @@
 #include<gcc_command/gcc_command.h>
 
 
-std::string GccCommand::CGccCommand::get_gcc_command()
+std::string GccCommands::CGccCommand::get_gcc_command()
 {
 	std::string str = "pass";
 
@@ -9,12 +9,12 @@ std::string GccCommand::CGccCommand::get_gcc_command()
 
 }
 
-void GccCommand::CGccCommand::set_gcc_command(const char* _gcc_command)
+void GccCommands::CGccCommand::set_gcc_command(const char* _gcc_command)
 {
 	run_cmd(_gcc_command);
 }
 
-int GccCommand::CGccCommand::gcc_o_command()
+int GccCommands::CGccCommand::gcc_o_command()
 {
 
 	return 0;

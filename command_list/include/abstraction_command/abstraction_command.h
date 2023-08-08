@@ -2,6 +2,7 @@
 #include <Windows.h>
 #include<string>
 namespace AbsCommand {
+
 	class Abs_Command
 	{
 	public:

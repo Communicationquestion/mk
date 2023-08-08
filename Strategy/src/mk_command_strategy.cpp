@@ -1,6 +1,7 @@
 #include<mk_command_strategy/mk_command_strategy.h>
 #include<commands/cmake_command.h>
 #include<commands/file_command.h>
+#include<commands/gcc_command.h>
 int MkCommandStrategy::CMKCommandStrategy::execute(std::vector<std::string> v_command)
 {
 
@@ -23,4 +24,5 @@ void MkCommandStrategy::CMKCommandStrategy::initmap()
 	//add("cmake", new CmakeCommand);
 	add("new", new FileCreate);
 	add("add", new FileAdd);
+	add("grun", new GccCommandRun);
 }
