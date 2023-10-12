@@ -1,5 +1,4 @@
-﻿// main.cpp: 定义应用程序的入口点。
-//
+﻿
 
 #include "main.h"
 #include<create_project/create_project.h>
@@ -26,19 +25,14 @@ int main(int argc, char* argv[])
 		printf("error\n");
 		return 0;
 	}
-
-
 	for (int i = 1; i < argc; i++) {
 		//commands = commands + argv[i];
 		v_commands.push_back(argv[i]);
 	}
-
 	//std::cout << "log:" << commands << std::endl;
 	MkCommandStrategy::CMKCommandStrategy test;
 	test.initmap();
 	//test.add("cmake", new CmakeCommand);
-
 	test.execute(v_commands);
-
 	return 0;
 }

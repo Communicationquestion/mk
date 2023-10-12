@@ -14,7 +14,7 @@ int FileCreate::MkRun(std::string _receive_commands)
 
 	CreateModule::Create_Module modeule_test;
 
-	modeule_test.creta_files(_receive_commands + "\\" + _receive_commands);
+	modeule_test.creta_files(_receive_commands + "\\" + _receive_commands,"project");
 
 	return 0;
 }
@@ -30,7 +30,7 @@ int FileAdd::MkRun(std::string _receive_commands)
 
 	CreateModule::Create_Module modeule_test;
 
-	modeule_test.creta_files(_receive_commands);
+	modeule_test.creta_files(_receive_commands,"module");
 
 	return 0;
 }

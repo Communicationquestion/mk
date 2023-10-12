@@ -10,10 +10,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 project ("mk")
 
 # 包含子项目。
-add_subdirectory ("main")
-add_subdirectory ("abstraction_path")
-add_subdirectory ("project_path")
-add_subdirectory ("module_path")
+add_subdirectory ("mk")
+add_subdirectory ("path")
 add_subdirectory ("create_file")
 add_subdirectory ("command_list")
 add_subdirectory ("mk_command")
