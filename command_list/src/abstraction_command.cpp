@@ -17,13 +17,13 @@ int AbsCommand::Abs_Command::run_cmd(const char* cmd)
 	{
 		memset(MsgBuff, 0, MsgLen);
 
-		//¶ÁÈ¡ÃüÁîÖ´ĞĞ¹ı³ÌÖĞµÄÊä³ö
+		//è¯»å–å‘½ä»¤æ‰§è¡Œè¿‡ç¨‹ä¸­çš„è¾“å‡º
 		while (fgets(MsgBuff, MsgLen, fp) != NULL)
 		{
 			printf("MsgBuff: %s\n", MsgBuff);
 		}
 
-		//¹Ø±ÕÖ´ĞĞµÄ½ø³Ì
+		//å…³é—­æ‰§è¡Œçš„è¿›ç¨‹
 		if (_pclose(fp) == -1)
 		{
 			return -3;

@@ -31,6 +31,8 @@ namespace abstraction_create {
 		virtual int creta_files(std::string _file_name, std::string _type) = 0;
 
 		bool MkDir(const std::string& strPath);
+		int create_txt(std::string _txtPath, std::string _nameTxt);
+		int create_txt(std::string _txtPath );
 		int create_cmaketxt(std::string _cmakePath, std::string _txt);
 		project_path::project_path set_project_path(std::string _file);
 

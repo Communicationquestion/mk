@@ -17,6 +17,12 @@ int CreateModule::Create_Module::creta_files(std::string _file_name,std::string 
 
 	get_module_Path().get_src_path();
 	MkDir(get_module_Path().get_src_path());
+	if (_type == "project") {
+		get_module_Path().get_mainCpp();
+		create_txt(get_module_Path().get_mainCpp());
+	}
+
+	
 
 	return 0;
 }

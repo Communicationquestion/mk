@@ -1,6 +1,4 @@
-﻿
-
-#include "main.h"
+﻿#include "main.h"
 #include<create_project/create_project.h>
 #include<create_module/create_module.h>
 #include<abstraction_command/abstraction_command.h>
@@ -8,18 +6,8 @@
 #include<commands/cmake_command.h>
 int main(int argc, char* argv[])
 {
-	//create_project::CreateProject test;
+	std::cout << "asd" << std::endl;
 
-	//test.creta_files();
-
-	//CreateModule::Create_Module modeule_test;
-
-	//modeule_test.creta_files();
-
-	//AbsCommand::Abs_Command cmd_test;
-
-	//cmd_test.run_cmd("cmake -help");
-	//std::string commands{};
 	std::vector<std::string> v_commands{};
 	if (argc < 2) {
 		printf("error\n");

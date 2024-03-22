@@ -42,31 +42,31 @@ bool abstraction_create::Abs_create::MkDir(const std::string& strPath)
 	char* pDirTemp = new char[nDirLen + 4];
 	strPath.copy(pDirTemp, nDirLen + 1, 0);// +1 to copy '\0'
 	pDirTemp[nDirLen] = '\0';
-	//ÔÚÄ©Î²¼Ó'/'
+	//åœ¨æœ«å°¾åŠ '/'
 	if (pDirTemp[nDirLen - 1] != '\\' && pDirTemp[nDirLen - 1] != '/')
 	{
 		pDirTemp[nDirLen] = '/';
 		pDirTemp[nDirLen + 1] = '\0';
 		nDirLen++;
 	}
-	// ´´½¨Ä¿Â¼
+	// åˆ›å»ºç›®å½•
 	for (i = 0; i < nDirLen; i++)
 	{
 		if (pDirTemp[i] == '\\' || pDirTemp[i] == '/')
 		{
-			pDirTemp[i] = '\0';//½Ø¶ÏºóÃæµÄ×ÓÄ¿Â¼£¬Öð¼¶²é¿´Ä¿Â¼ÊÇ·ñ´æÔÚ£¬Èô²»´æÔÚÔò´´½¨
-			//Èç¹û²»´æÔÚ,´´½¨
+			pDirTemp[i] = '\0';//æˆªæ–­åŽé¢çš„å­ç›®å½•ï¼Œé€çº§æŸ¥çœ‹ç›®å½•æ˜¯å¦å­˜åœ¨ï¼Œè‹¥ä¸å­˜åœ¨åˆ™åˆ›å»º
+			//å¦‚æžœä¸å­˜åœ¨,åˆ›å»º
 			int statu;
 			statu = ACCESS(pDirTemp, 0);
-			if (statu != 0)//¿ÉÄÜ´æÔÚÍ¬ÃûÎÄ¼þµ¼ÖÂÃ»ÓÐ´´½¨
+			if (statu != 0)//å¯èƒ½å­˜åœ¨åŒåæ–‡ä»¶å¯¼è‡´æ²¡æœ‰åˆ›å»º
 			{
 				statu = MKDIR(pDirTemp);
-				if (statu != 0)//¿ÉÄÜÉÏ¼¶²»ÊÇÎÄ¼þ¼Ð¶øÊÇÍ¬ÃûÎÄ¼þµ¼ÖÂ´´½¨Ê§°Ü
+				if (statu != 0)//å¯èƒ½ä¸Šçº§ä¸æ˜¯æ–‡ä»¶å¤¹è€Œæ˜¯åŒåæ–‡ä»¶å¯¼è‡´åˆ›å»ºå¤±è´¥
 				{
 					return false;
 				}
 			}
-			//Ö§³Ölinux,½«ËùÓÐ\»»³É/
+			//æ”¯æŒlinux,å°†æ‰€æœ‰\æ¢æˆ/
 			pDirTemp[i] = '/';
 		}
 	}
@@ -76,9 +76,9 @@ bool abstraction_create::Abs_create::MkDir(const std::string& strPath)
 int abstraction_create::Abs_create::create_cmaketxt(std::string _cmakePath, std::string _txt)
 {
 	std::ofstream oFile;
-	//²»´æÔÚÔòÐÂ½¨ÎÄ¼þ
+	//ä¸å­˜åœ¨åˆ™æ–°å»ºæ–‡ä»¶
 	oFile.open(_cmakePath, std::ios::app);
-	if (!oFile)  //trueÔòËµÃ÷ÎÄ¼þ´ò¿ª³ö´í
+	if (!oFile)  //trueåˆ™è¯´æ˜Žæ–‡ä»¶æ‰“å¼€å‡ºé”™
 		std::cout << "error 1" << std::endl;
 	else
 		oFile << _txt;
@@ -87,4 +87,33 @@ int abstraction_create::Abs_create::create_cmaketxt(std::string _cmakePath, std:
 
 	return 0;
 
+}
+
+int abstraction_create::Abs_create::create_txt(std::string _txtPath, std::string _nameTxt)
+{
+	std::ofstream oFile;
+	//ä¸å­˜åœ¨åˆ™æ–°å»ºæ–‡ä»¶
+	oFile.open(_txtPath, std::ios::app);
+	if (!oFile)  //trueåˆ™è¯´æ˜Žæ–‡ä»¶æ‰“å¼€å‡ºé”™
+		std::cout << "error 1" << std::endl;
+	else
+		oFile << _nameTxt;
+
+	oFile.close();
+
+	return 0;
+}
+int abstraction_create::Abs_create::create_txt(std::string _txtPath)
+{
+	std::ofstream oFile;
+	//ä¸å­˜åœ¨åˆ™æ–°å»ºæ–‡ä»¶
+	oFile.open(_txtPath, std::ios::app);
+	if (!oFile)  //trueåˆ™è¯´æ˜Žæ–‡ä»¶æ‰“å¼€å‡ºé”™
+		std::cout << "error 1" << std::endl;
+	else
+		oFile;
+
+	oFile.close();
+
+	return 0;
 }
