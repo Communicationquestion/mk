@@ -6,7 +6,7 @@
 #include<commands/cmake_command.h>
 int main(int argc, char* argv[])
 {
-	std::cout << "asd" << std::endl;
+	//std::cout << "asd" << std::endl;
 
 	std::vector<std::string> v_commands{};
 	if (argc < 2) {
@@ -17,7 +17,7 @@ int main(int argc, char* argv[])
 		//commands = commands + argv[i];
 		v_commands.push_back(argv[i]);
 	}
-	//std::cout << "log:" << commands << std::endl;
+	//std::cout << "log:" << commands << std::endl;   
 	MkCommandStrategy::CMKCommandStrategy test;
 	test.initmap();
 	//test.add("cmake", new CmakeCommand);

@@ -21,6 +21,7 @@ int FileCreate::MkRun(std::string _receive_commands)
 
 int FileAdd::MkRun()
 {
+	std::cout << "mk new zero arge" << "\n";
 	return 0;
 }
 
