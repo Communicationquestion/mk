@@ -19,23 +19,26 @@ atomizationCmd_translate::AtomCmdTranslate::AtomCmdTranslate(std::string _type)
 
 void atomizationCmd_translate::AtomCmdTranslate::translation(std::string _input)
 {
-
     _input = GbkToUtf8(_input.c_str());
     processor.Encode(_input, &pieces);
-    //for (const std::string& token : pieces) {
-    //    std::cout << token << std::endl;
-    //}
+
    
     batch = { pieces };
     results = translator->translate_batch(batch);
 
     for (const auto& token : results[0].output()) {
-        //std::cout << token;
+       
         res.push_back(token);
     }
   
     resprocessor.Decode(res, &text);
 
-    
     std::cout << text << std::endl;
+
+}
+
+atomizationCmd_translate::AtomCmdTranslate::~AtomCmdTranslate()
+{
+    delete translator;
+    translator = nullptr;
 }

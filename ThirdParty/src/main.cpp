@@ -1,5 +1,4 @@
 #include<ThirdParty/thirdparty.h>
-
 std::string GbkToUtf8(const char* src_str)
 {
 	int len = MultiByteToWideChar(CP_ACP, 0, src_str, -1, NULL, 0);
@@ -14,4 +13,25 @@ std::string GbkToUtf8(const char* src_str)
 	if (wstr) delete[] wstr;
 	if (str) delete[] str;
 	return strTemp;
+}
+int run(const char* cmd) {
+
+
+	int result = system(cmd);
+
+	if (result == 0) {
+
+		std::cout << "CMD命令执行成功." << std::endl;
+	}
+	else {
+
+		std::cerr << "CMD命令执行失败." << std::endl;
+	}
+
+	return 0;
+}
+void TextTurnsSound(std::string _txt)
+{
+	std::string cmd_string = " echo '" + _txt + "' | .\\piper\\piper.exe --model .\\piper\\zh_CN-huayan-medium.onnx -c .\\piper\\zh_zh_CN_huayan_medium_zh_CN-huayan-medium.onnx.json --output_file ./b.wav";
+	run(cmd_string.c_str());
 }
