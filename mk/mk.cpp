@@ -7,11 +7,7 @@
 #include<basewindows/basewindows.h>
 int main(int argc, char* argv[])
 {
-	//std::cout << "asd" << std::endl;
-	/*char c[1];
-	char *b = c;
-	char** a = &b;*/
-	initqmlapp(argc, argv);
+	initqmlapp(argc,argv );
 	std::vector<std::string> v_commands{};
 	if (argc < 2) {
 		printf("error\n");

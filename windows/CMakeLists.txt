@@ -11,8 +11,13 @@ qt_add_qml_module(windows
     URI windows
     VERSION 1.0
     SOURCES
-        src/window.cpp
+
         include/basewindows/basewindows.h
+        include/PasswordManagement/PasswordManagement.h
+        src/PasswordManagement.cpp
+        src/window.cpp
+
+       
     QML_FILES
          src/qmls/main.qml
          src/qmls/states_transitions.qml

@@ -1,10 +1,14 @@
 import QtQuick 2.15
 import QtQuick.Layouts 1.15
 import QtQuick.Controls 2.15
+import passwd 1.0
 
-Rectangle {
+Rectangle{
     width: parent.width
     height: parent.height
+    PassWd{
+        id:passWd
+    }
         Column {
             anchors.centerIn: parent
             width: parent.width
@@ -31,6 +35,7 @@ Rectangle {
                         height: 30
                         border.color: "grey"
                         TextInput {
+                            id: t_input_name
                             anchors.fill: parent
                             font.pointSize: 15
                             focus: true
@@ -50,6 +55,7 @@ Rectangle {
                         height: 30
                         border.color: "grey"
                         TextInput {
+                            id: t_input_user
                             anchors.fill: parent
                             font.pointSize: 15
                             focus: true
@@ -69,6 +75,7 @@ Rectangle {
                         height: 30
                         border.color: "grey"
                         TextInput {
+                            id: t_input_passwd
                             anchors.fill: parent
                             font.pointSize: 15
                             focus: true
@@ -84,20 +91,37 @@ Rectangle {
                     anchors.centerIn: parent
                     width: parent.width
                     height: parent.height
+                     Rectangle {
+                        color: "green"
+                        width: parent.width / 3
+                        height: parent.height
+                        Button {
+                            width: parent.width / 2
+                            height: parent.height / 2
+                            anchors.centerIn: parent
+                            text: "Add"
+                            onClicked:{
+                                passWd.addAccount(t_input_name.text,t_input_user.text,t_input_passwd.text)
+                            }
+                        }
+                    }
                     Rectangle {
                         color: "yellow"
-                        width: parent.width / 2
+                        width: parent.width / 3
                         height: parent.height
                         Button {
                             width: parent.width / 2
                             height: parent.height / 2
                             anchors.centerIn: parent
                             text: "Save"
+                            onClicked:{
+                                passWd.saveAccount()
+                            }
                         }
                     }
                     Rectangle {
                         color: "aqua"
-                        width: parent.width / 2
+                        width: parent.width / 3
                         height: parent.height
                         Button {
                             width: parent.width / 2
