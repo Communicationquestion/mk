@@ -102,6 +102,10 @@ Rectangle{
                             text: "Add"
                             onClicked:{
                                 passWd.addAccount(t_input_name.text,t_input_user.text,t_input_passwd.text)
+
+                                t_input_name.clear()
+                                t_input_user.clear()
+                                t_input_passwd.clear()
                             }
                         }
                     }

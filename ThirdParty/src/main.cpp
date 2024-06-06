@@ -14,6 +14,36 @@ std::string GbkToUtf8(const char* src_str)
 	if (str) delete[] str;
 	return strTemp;
 }
+
+std::string Utf8ToGbk(const char* src_str)
+{
+	int len = MultiByteToWideChar(CP_UTF8, 0, src_str, -1, NULL, 0);
+	wchar_t* wszGBK = new wchar_t[len + 1];
+	memset(wszGBK, 0, len * 2 + 2);
+	MultiByteToWideChar(CP_UTF8, 0, src_str, -1, wszGBK, len);
+	len = WideCharToMultiByte(CP_ACP, 0, wszGBK, -1, NULL, 0, NULL, NULL);
+	char* szGBK = new char[len + 1];
+	memset(szGBK, 0, len + 1);
+	WideCharToMultiByte(CP_ACP, 0, wszGBK, -1, szGBK, len, NULL, NULL);
+	std::string strTemp(szGBK);
+	if (wszGBK) delete[] wszGBK;
+	if (szGBK) delete[] szGBK;
+	return strTemp;
+}
+std::string stringCharacterReplace(std::string str, char _oldch,
+	std::string _newch) {
+	std::string res{};
+	for (auto ch : str) {
+		if (ch == _oldch) {
+
+			res = res + "▁";
+		}
+		else {
+			res = res + ch;
+		}
+	}
+	return res;
+}
 int run(const char* cmd) {
 
 
@@ -34,4 +64,18 @@ void TextTurnsSound(std::string _txt)
 {
 	std::string cmd_string = " echo '" + _txt + "' | .\\piper\\piper.exe --model .\\piper\\zh_CN-huayan-medium.onnx -c .\\piper\\zh_zh_CN_huayan_medium_zh_CN-huayan-medium.onnx.json --output_file ./b.wav";
 	run(cmd_string.c_str());
+}
+int create_txt(std::string _txtPath, std::string _nameTxt)
+{
+	std::ofstream oFile;
+	//不存在则新建文件
+	oFile.open(_txtPath, std::ios::app);
+	if (!oFile)  //true则说明文件打开出错
+		std::cout << "error 1" << std::endl;
+	else
+		oFile << _nameTxt;
+
+	oFile.close();
+
+	return 0;
 }

@@ -23,7 +23,7 @@
 #define MKDIR(a) mkdir((a),0755)
 #define RMDIR(a) rmdir((a))
 #endif
-
+ 
 namespace abstraction_create {
 	class Abs_create
 	{

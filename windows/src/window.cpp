@@ -2,7 +2,7 @@
 #include<PasswordManagement/PasswordManagement.h>
 #include <QQmlContext>
 int initqmlapp(int argc, char* argv[]) {
-
+    
     QGuiApplication app(argc, argv);
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
     qmlRegisterType<Qmlmod::Passwd>("passwd", 1, 0, "PassWd");
@@ -16,11 +16,3 @@ int initqmlapp(int argc, char* argv[]) {
     return app.exec();
 }
 
-
-namespace BaseWindow {
-
-
-
-
-
-}

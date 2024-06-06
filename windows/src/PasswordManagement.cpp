@@ -1,4 +1,6 @@
+#pragma once
 #include<PasswordManagement/PasswordManagement.h>
+
 Qmlmod::Passwd::Passwd(QObject* parent) : QObject(parent)
 {
 }
@@ -36,9 +38,25 @@ void Qmlmod::Passwd::addAccount(QString name, QString user, QString passwd)
 
 void Qmlmod::Passwd::saveAccount()
 {
+	creatpasswd.MkDir("./mkconfig");
+	
 	for (auto &t : account)
 	{
+		pwContents = pwContents+" "+ t.name + " " + t.user + " " + t.passwd + "\n";
+	
 		qDebug() << t.name << t.user << t.passwd;
 	}
-	
+
+	creatpasswd.create_txt("./mkconfig/config.txt", pwContents.toStdString());
 }
+
+void Qmlmod::Passwd::foo()
+{
+	std::string message = "我我我我我我我我我我我";
+	CryptoPP::StringSource Base64String(message, true, new CryptoPP::Base64Encoder(new CryptoPP::FileSink(std::cout)));
+
+	std::string base64Message = "ztLO0s7SztLO0s7SztLO0s7SztLO0g==";
+	CryptoPP::StringSource Base64String2(base64Message, true, new CryptoPP::Base64Decoder(new CryptoPP::FileSink(std::cout)));
+}
+
+
