@@ -14,23 +14,23 @@ int main(int argc, char* argv[])
 
 
 
-	//initqmlapp(argc,argv );
-	std::vector<std::string> v_commands{};
-	if (argc < 2) {
-		printf("error\n");
-		return 0;
-	}
-	for (int i = 1; i < argc; i++) {
-		//commands = commands + argv[i];
-		v_commands.push_back(argv[i]);
-		
-	}
+	initqmlapp(argc,argv );
+	//std::vector<std::string> v_commands{};
+	//if (argc < 2) {
+	//	printf("error\n");
+	//	return 0;
+	//}
+	//for (int i = 1; i < argc; i++) {
+	//	//commands = commands + argv[i];
+	//	v_commands.push_back(argv[i]);
+	//	
+	//}
 
-	//std::cout << "log:" << commands << std::endl;   
+	////std::cout << "log:" << commands << std::endl;   
 
-	MkCommandStrategy::CMKCommandStrategy test;
-	test.initmap();
-	//test.add("cmake", new CmakeCommand);
-	test.execute(v_commands);
+	//MkCommandStrategy::CMKCommandStrategy test;
+	//test.initmap();
+	////test.add("cmake", new CmakeCommand);
+	//test.execute(v_commands);
 	return 0;
 }
