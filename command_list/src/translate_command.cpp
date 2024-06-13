@@ -42,9 +42,9 @@ void atomizationCmd_translate::AtomCmdTranslate::translation(std::string _input)
     _input = stringCharacterReplace(_input, ' ', Utf8ToGbk(gres.c_str()));
     //std::cout <<"_input " << _input << std::endl;
 
-    if (l_type == "zhen") {
-        _input = GbkToUtf8(_input.c_str());
-    }
+    
+        //_input = GbkToUtf8(_input.c_str());
+   
    
 
     processor.Encode(_input, &pieces);
