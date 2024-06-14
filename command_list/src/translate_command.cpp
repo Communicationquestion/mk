@@ -1,8 +1,10 @@
 #include<translate_command/translate_command.h>
+
 atomizationCmd_translate::AtomCmdTranslate::AtomCmdTranslate(std::string _type)
 {
     l_type = _type;
-    addlanguage();
+    //addlanguage("test");
+    set_config();
     if (_type == "zhen") {
         languages.processor =v_languages.at(0).processor;
         languages.resprocessor = v_languages.at(0).resprocessor;
@@ -12,7 +14,7 @@ atomizationCmd_translate::AtomCmdTranslate::AtomCmdTranslate(std::string _type)
         languages.processor = v_languages.at(1).processor;
         languages.resprocessor = v_languages.at(1).resprocessor;
         languages.Translator = v_languages.at(1).Translator;
-    }
+    } 
     else{
         languages.processor = {};
         languages.resprocessor = {};
@@ -62,17 +64,30 @@ void atomizationCmd_translate::AtomCmdTranslate::translation(std::string _input)
     std::cout << Utf8ToGbk(text.c_str()) << std::endl;
 
 }
+void atomizationCmd_translate::AtomCmdTranslate::set_config()
+{
+    std::string current_paht= exec_cmd("where.exe mk");
+    //std::cout <<"mk in path: "<< current_paht << std::endl;
+    current_paht.erase(current_paht.size() - 7);
+    addlanguage(current_paht);
 
-void atomizationCmd_translate::AtomCmdTranslate::addlanguage()
+
+}
+void atomizationCmd_translate::AtomCmdTranslate::set_config(std::string _path)
 {
 
-    languages.processor = "./model/opus-2020-07-17zhen/source.spm";
-    languages.resprocessor = "./model/opus-2020-07-17enzh/source.spm";
-    languages.Translator = "./model/zhen_ctranslate2";
+
+}
+void atomizationCmd_translate::AtomCmdTranslate::addlanguage(std::string _path)
+{
+    _path = stringCharacterReplace(_path, '\\', "/");
+    languages.processor = _path+"/model/opus-2020-07-17zhen/source.spm";
+    languages.resprocessor = _path + "/model/opus-2020-07-17enzh/source.spm";
+    languages.Translator = _path + "/model/zhen_ctranslate2";
     v_languages.push_back(languages);
-    languages.processor = "./model/opus-2020-07-17enzh/source.spm";
-    languages.resprocessor = "./model/opus-2020-07-17zhen/source.spm";
-    languages.Translator = "./model/enzh_ctranslate2";
+    languages.processor = _path + "/model/opus-2020-07-17enzh/source.spm";
+    languages.resprocessor = _path + "/model/opus-2020-07-17zhen/source.spm";
+    languages.Translator = _path + "/model/enzh_ctranslate2";
     v_languages.push_back(languages);
 }
 

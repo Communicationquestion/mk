@@ -36,6 +36,7 @@ void MkCommandStrategy::CMKCommandStrategy::initmap()
 	add("grun", new GccCommandRun);
 	add("zhen", new TranslateCommand("zhen"));
 	add("enzh", new TranslateCommand("enzh"));
+	add("trsconfig", new TranslateCommand("zhen"));
 	//add("te",new tran);
 
 }
