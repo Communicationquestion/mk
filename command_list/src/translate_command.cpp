@@ -39,11 +39,12 @@ void atomizationCmd_translate::AtomCmdTranslate::translation(std::string _input)
 {
     //std::cout <<"1-----  " << _input << std::endl;
     std::string gres = "▁";
-    _input = stringCharacterReplace(_input, ' ', Utf8ToGbk(gres.c_str()));
-    //std::cout <<"_input " << _input << std::endl;
+    _input = stringCharacterReplace(_input, ' ',  Utf8ToGbk(gres.c_str()));
+    
+    std::cout <<"_input " << _input << std::endl;
 
     
-        //_input = GbkToUtf8(_input.c_str());
+    _input = GbkToUtf8(_input.c_str());
    
    
 
