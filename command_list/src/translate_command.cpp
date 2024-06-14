@@ -49,7 +49,6 @@ void atomizationCmd_translate::AtomCmdTranslate::translation(std::string _input)
 
     processor.Encode(_input, &pieces);
 
-   
     batch = { pieces };
     results = translator->translate_batch(batch);
 
@@ -67,13 +66,13 @@ void atomizationCmd_translate::AtomCmdTranslate::translation(std::string _input)
 void atomizationCmd_translate::AtomCmdTranslate::addlanguage()
 {
 
-    languages.processor = "D:/model/opus-2020-07-17zhen/source.spm";
-    languages.resprocessor = "D:/model/opus-2020-07-17enzh/source.spm";
-    languages.Translator = "D:/model/zhen_ctranslate2";
+    languages.processor = "./model/opus-2020-07-17zhen/source.spm";
+    languages.resprocessor = "./model/opus-2020-07-17enzh/source.spm";
+    languages.Translator = "./model/zhen_ctranslate2";
     v_languages.push_back(languages);
-    languages.processor = "D:/model/opus-2020-07-17enzh/source.spm";
-    languages.resprocessor = "D:/model/opus-2020-07-17zhen/source.spm";
-    languages.Translator = "D:/model/enzh_ctranslate2";
+    languages.processor = "./model/opus-2020-07-17enzh/source.spm";
+    languages.resprocessor = "./model/opus-2020-07-17zhen/source.spm";
+    languages.Translator = "./model/enzh_ctranslate2";
     v_languages.push_back(languages);
 }
 

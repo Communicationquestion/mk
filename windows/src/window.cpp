@@ -11,7 +11,7 @@ int initqmlapp(int argc, char* argv[]) {
     &app, []() { QCoreApplication::exit(-1); },
     Qt::QueuedConnection);
     
-    engine.load("D:\\code\\C++\\CppProgram\\mk\\windows\\src\\qmls\\Interactive.qml");
+    engine.load(".\\windows\\src\\qmls\\Interactive.qml");
 
     return app.exec();
 }
