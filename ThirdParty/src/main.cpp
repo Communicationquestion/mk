@@ -36,7 +36,7 @@ std::string stringCharacterReplace(std::string str, char _oldch,
 	for (auto ch : str) {
 		if (ch == _oldch) {
 
-			res = res + "▁";
+			res = res + _newch;
 		}
 		else {
 			res = res + ch;
@@ -59,6 +59,19 @@ int run(const char* cmd) {
 	}
 
 	return 0;
+}
+
+std::string exec_cmd(const char* cmd) {
+	std::array<char, 128> buffer;
+	std::string result;
+	std::shared_ptr<FILE> pipe(_popen(cmd, "r"), _pclose);
+	if (!pipe) {
+		throw std::runtime_error("popen() failed!");
+	}
+	while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
+		result += buffer.data();
+	}
+	return result;
 }
 void TextTurnsSound(std::string _txt)
 {

@@ -6,3 +6,4 @@ target_link_libraries(command_list PUBLIC sentencepiece.lib )
 
 target_link_libraries( command_list PUBLIC ThirdParty)
 target_include_directories(command_list PUBLIC include)
+target_link_libraries( command_list PUBLIC path)
