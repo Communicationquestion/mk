@@ -1,6 +1,7 @@
 #include<basewindows/basewindows.h>
 #include<PasswordManagement/PasswordManagement.h>
 #include <QQmlContext>
+
 int initqmlapp(int argc, char* argv[]) {
     
     QGuiApplication app(argc, argv);

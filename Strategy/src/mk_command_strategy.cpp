@@ -3,6 +3,7 @@
 #include<commands/file_command.h>
 #include<commands/gcc_command.h>
 #include<commands/translate_command.h>
+#include<commands/passwd_set.h>
 int MkCommandStrategy::CMKCommandStrategy::execute(std::vector<std::string> v_command)
 {
 
@@ -31,12 +32,29 @@ int MkCommandStrategy::CMKCommandStrategy::execute(std::vector<std::string> v_co
 void MkCommandStrategy::CMKCommandStrategy::initmap()
 {
 	//add("cmake", new CmakeCommand);
-	add("new", new FileCreate);
-	add("add", new FileAdd);
-	add("grun", new GccCommandRun);
-	add("zhen", new TranslateCommand("zhen"));
-	add("enzh", new TranslateCommand("enzh"));
-	add("trsconfig", new TranslateCommand("zhen"));
+	if (cmdtype == "new") {
+
+		add("new", new FileCreate);
+	}
+	else if (cmdtype == "add")
+	{
+		add("add", new FileAdd);
+	}
+	else if (cmdtype == "grun")
+	{
+		add("grun", new GccCommandRun);
+	}
+	else if(cmdtype == "zhen"){
+		add("zhen", new TranslateCommand("zhen"));
+	}
+	else if(cmdtype == "enzh")
+	{
+		add("enzh", new TranslateCommand("enzh"));
+	}
+	else if (cmdtype == "passwd") {
+		add("passwd", new MKRUN::PasswdSet);
+	}
+	//add("trsconfig", new TranslateCommand("zhen"));
 	//add("te",new tran);
 
 }

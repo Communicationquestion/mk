@@ -21,7 +21,9 @@ int main(int argc, char* argv[])
 		v_commands.push_back(argv[i]);
 	}
 	//std::cout << "log:" << commands << std::endl;   
-	MkCommandStrategy::CMKCommandStrategy test;
+	std::string _cmd = v_commands.at(0);
+	MkCommandStrategy::CMKCommandStrategy test(_cmd);
+	
 	test.initmap();
 	//test.add("cmake", new CmakeCommand);
 	test.execute(v_commands);

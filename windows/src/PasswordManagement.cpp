@@ -48,11 +48,15 @@ void Qmlmod::Passwd::saveAccount()
 	}
 
 	creatpasswd.create_txt("./mkconfig/config.txt", pwContents.toStdString());
+
+
+
+
 }
 
 void Qmlmod::Passwd::foo()
 {
-	std::string message = "ÎÒÎÒÎÒÎÒÎÒÎÒÎÒÎÒÎÒÎÒÎÒ";
+	std::string message = "æˆ‘æˆ‘æˆ‘æˆ‘æˆ‘æˆ‘æˆ‘æˆ‘æˆ‘æˆ‘æˆ‘";
 	CryptoPP::StringSource Base64String(message, true, new CryptoPP::Base64Encoder(new CryptoPP::FileSink(std::cout)));
 
 	std::string base64Message = "ztLO0s7SztLO0s7SztLO0s7SztLO0g==";
