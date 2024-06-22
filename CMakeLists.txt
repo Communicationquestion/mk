@@ -3,7 +3,9 @@
 #
 cmake_minimum_required (VERSION 3.8)
 add_compile_options("$<$<C_COMPILER_ID:MSVC>:/utf-8>")
-add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/gbk>")
+add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
+set(GOOGLETEST_VERSION 1.11.0)
+
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
@@ -43,7 +45,14 @@ add_subdirectory ("windows")
 
 
 
+  # Prevent overriding the parent project's compiler/linker settings on Windows.
+  set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+  set(install_gtest OFF)
+  set(install_gmock OFF)
+  set(build_gmock ON)
 
+  # This project is tested using GoogleTest.
+  add_subdirectory("ThirdParty/googletest")
 
 
 

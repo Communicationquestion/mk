@@ -40,10 +40,13 @@ namespace Qmlmod  {
 		Q_INVOKABLE void addAccount(QString name,QString user,QString passwd);
 
 		Q_INVOKABLE void saveAccount();
-		void foo();
+		void encipherfile(std::string _path);
 		
 	private:
+		byte iv[CryptoPP::AES::BLOCKSIZE];
 		Account account_item;
+		CryptoPP::XSalsa20::Encryption en;
+		CryptoPP::XSalsa20::Decryption de;
 		std::vector<Account> account;
 		Create creatpasswd;
 		QString pwContents{};

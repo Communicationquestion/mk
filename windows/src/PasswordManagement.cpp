@@ -47,20 +47,55 @@ void Qmlmod::Passwd::saveAccount()
 		qDebug() << t.name << t.user << t.passwd;
 	}
 
-	creatpasswd.create_txt("./mkconfig/config.txt", pwContents.toStdString());
+	std::string plaintext = pwContents.toStdString();
+	std::string key{};
+	std::cin >> key;
+	
+	memset(iv, 0x00, CryptoPP::AES::BLOCKSIZE);
+	CryptoPP::CBC_Mode<CryptoPP::AES>::Encryption encryption((byte*)key.c_str(), key.length(), iv);
+	std::string ciphertext{};
+	CryptoPP::StringSource(plaintext, true, new CryptoPP::StreamTransformationFilter(encryption, new CryptoPP::StringSink(ciphertext)));
 
 
+	std::string encoded{};
 
+	CryptoPP::StringSource Base64String(ciphertext, true, new CryptoPP::Base64Encoder(new CryptoPP::StringSink(encoded)));
+
+
+	creatpasswd.create_txt("./mkconfig/config.txt", encoded);
+
+	
+	encipherfile("./mkconfig/config.txt");
 
 }
 
-void Qmlmod::Passwd::foo()
+void Qmlmod::Passwd::encipherfile(std::string _path)
 {
-	std::string message = "我我我我我我我我我我我";
-	CryptoPP::StringSource Base64String(message, true, new CryptoPP::Base64Encoder(new CryptoPP::FileSink(std::cout)));
+	std::string key;
+	std::cin >> key;
+	std::string content1;
+	std::string read_cipher_text;
+	std::ifstream readfile(_path);
+	std::stringstream buffer;
+	buffer << readfile.rdbuf();
+	read_cipher_text = buffer.str();
+	readfile.close();
+	content1 = read_cipher_text;
+	std::cout << content1 << std::endl;
+	std::string uncoded;
+	CryptoPP::StringSource Base64String2(content1, true, new CryptoPP::Base64Decoder(new CryptoPP::StringSink(uncoded)));
 
-	std::string base64Message = "ztLO0s7SztLO0s7SztLO0s7SztLO0g==";
-	CryptoPP::StringSource Base64String2(base64Message, true, new CryptoPP::Base64Decoder(new CryptoPP::FileSink(std::cout)));
+	std::string ciphertext= uncoded;
+	// 解密过程
+	CryptoPP::CBC_Mode<CryptoPP::AES>::Decryption decryption((byte*)key.c_str(), key.length(), iv);
+	std::string decryptedtext;
+	CryptoPP::StringSource(ciphertext, true, new CryptoPP::StreamTransformationFilter(decryption, new CryptoPP::StringSink(decryptedtext)));
+
+	// 打印解密后的明文
+	std::cout << "res------:" << decryptedtext << std::endl;
+
+
+
 }
 
 

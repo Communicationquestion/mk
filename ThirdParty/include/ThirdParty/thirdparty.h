@@ -11,6 +11,13 @@
 #include<cryptopp/cryptlib.h>
 #include<cryptopp/base64.h>
 #include<cryptopp/files.h>
+#include <cryptopp/aes.h> 
+#include <cryptopp/hex.h> 
+#include <cryptopp/modes.h> 
+#include<cryptopp/salsa.h>
+#include<cryptopp/osrng.h>
+#include<cryptopp/secblock.h>
+
 std::string GbkToUtf8(const char* src_str);
 int run(const char* cmd);
 void TextTurnsSound(std::string _txt);

@@ -1,3 +1,4 @@
+
 file(GLOB_RECURSE srcs CONFIGURE_DEPENDS src/*.cpp include/*.h)
 add_library(ThirdParty STATIC ${srcs})
 
@@ -10,5 +11,9 @@ target_link_libraries(ThirdParty PUBLIC Qt6::Core Qt6::Quick Qt6::Gui)
 find_package(cryptopp CONFIG REQUIRED)
 target_link_libraries(ThirdParty PUBLIC cryptopp::cryptopp)
 
+target_link_libraries(ThirdParty PUBLIC gtest)
 
 target_include_directories(ThirdParty PUBLIC include)
+
+
+
