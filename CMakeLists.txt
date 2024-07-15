@@ -10,8 +10,8 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_compile_options("/permissive-")
 add_compile_options("/Zc:__cplusplus")
 
-set(CMAKE_PREFIX_PATH "C:/Program Files/QT6/lib/cmake")
-set(DQT_QMAKE_EXECUTABLE "C:/Program Files/QT6/bin/qmake.exe")
+set(CMAKE_PREFIX_PATH "C:/Qt/6.7.2/msvc2019_64/lib/cmake")
+set(DQT_QMAKE_EXECUTABLE "C:/Qt/6.7.2/msvc2019_64/bin/qmake.exe")
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_AUTOUIC ON)       # UIC能被自动执行
 set(CMAKE_AUTOMOC ON)       # MOC能被自动执行
