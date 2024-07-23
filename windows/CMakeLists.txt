@@ -23,6 +23,7 @@ qt_add_qml_module(windows
          src/qmls/states_transitions.qml
          src/qmls/file.qml
          src/qmls/Interactive.qml
+         src/qmls/txtfileitem.qml
 )
 target_link_libraries( windows PUBLIC ThirdParty)
 target_link_libraries( windows PUBLIC create_file)

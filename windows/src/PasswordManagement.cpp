@@ -49,7 +49,7 @@ void Qmlmod::Passwd::saveAccount()
 
 	std::string plaintext = pwContents.toStdString();
 	std::string key{};
-	std::cin >> key;
+	key = txtFileKey.toStdString();
 	
 	memset(iv, 0x00, CryptoPP::AES::BLOCKSIZE);
 	CryptoPP::CBC_Mode<CryptoPP::AES>::Encryption encryption((byte*)key.c_str(), key.length(), iv);
@@ -67,6 +67,11 @@ void Qmlmod::Passwd::saveAccount()
 	
 	encipherfile("./mkconfig/config.txt");
 
+}
+
+Q_INVOKABLE void Qmlmod::Passwd::setKey(QString _key)
+{
+	txtFileKey = _key;
 }
 
 void Qmlmod::Passwd::encipherfile(std::string _path)
@@ -88,14 +93,18 @@ void Qmlmod::Passwd::encipherfile(std::string _path)
 	std::string ciphertext= uncoded;
 	// 解密过程
 	CryptoPP::CBC_Mode<CryptoPP::AES>::Decryption decryption((byte*)key.c_str(), key.length(), iv);
-	std::string decryptedtext;
+	std::string decryptedtext{};
 	CryptoPP::StringSource(ciphertext, true, new CryptoPP::StreamTransformationFilter(decryption, new CryptoPP::StringSink(decryptedtext)));
 
 	// 打印解密后的明文
 	std::cout << "res------:" << decryptedtext << std::endl;
-
-
-
 }
 
+Qmlmod::TxtTable::TxtTable(QObject* parent)
+{
+	QString file_name = QFileDialog::getOpenFileName(NULL, "标题", ".", "*.txt");
+}
 
+Qmlmod::TxtTable::~TxtTable()
+{
+}

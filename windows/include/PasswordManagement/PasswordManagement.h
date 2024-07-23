@@ -4,7 +4,7 @@
 #include<QDebug>
 #include<ThirdParty/thirdparty.h>
 #include<abstraction_create/abstraction_create.h>
-
+#include <QFileDialog>
 
 namespace Qmlmod  {
 	struct Account
@@ -12,7 +12,9 @@ namespace Qmlmod  {
 		QString name;
 		QString user;
 		QString passwd;
+
 	};
+	
 	class Create : public abstraction_create::Abs_create 
 	{
 	public:
@@ -40,6 +42,7 @@ namespace Qmlmod  {
 		Q_INVOKABLE void addAccount(QString name,QString user,QString passwd);
 
 		Q_INVOKABLE void saveAccount();
+		Q_INVOKABLE void setKey(QString _key);
 		void encipherfile(std::string _path);
 		
 	private:
@@ -48,8 +51,26 @@ namespace Qmlmod  {
 		CryptoPP::XSalsa20::Encryption en;
 		CryptoPP::XSalsa20::Decryption de;
 		std::vector<Account> account;
+		QString txtFileKey;
 		Create creatpasswd;
 		QString pwContents{};
+	};
+
+	class TxtTable : public QObject
+	{
+		Q_OBJECT
+	public:
+		explicit TxtTable(QObject* parent = nullptr);
+
+		~TxtTable();
+
+
+	private:
+		byte iv[CryptoPP::AES::BLOCKSIZE];
+		Account account_item;
+		CryptoPP::XSalsa20::Encryption en;
+		CryptoPP::XSalsa20::Decryption de;
+
 	};
 
 }

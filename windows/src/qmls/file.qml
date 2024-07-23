@@ -92,6 +92,32 @@ Rectangle{
                             }
                         }
                     }
+
+                    //密钥
+                    RowLayout{
+                       
+                        Rectangle {
+                            width: 100
+                            height: 30
+                            Text {
+                                anchors.fill: parent
+                                text: "key"
+                                font.pointSize: 15
+                            }
+                        }
+
+                        Rectangle {
+                            width: 400
+                            height: 30
+                            border.color: "grey"
+                            TextInput {
+                                id: t_input_key
+                                anchors.fill: parent
+                                font.pointSize: 15
+                                focus: true
+                            }
+                        }
+                    }
                 }
             }
             Rectangle {
@@ -112,7 +138,7 @@ Rectangle{
                             anchors.centerIn: parent
                             text: "Add"
                             onClicked:{
-                                passWd.addAccount                                      (t_input_name.text,t_input_user.text,t_input_passwd.text)  
+                                passWd.addAccount(t_input_name.text,t_input_user.text,t_input_passwd.text)  
 
                                 t_input_name.clear()
                                 t_input_user.clear()
@@ -130,7 +156,9 @@ Rectangle{
                             anchors.centerIn: parent
                             text: "Save"
                             onClicked:{
-                                passWd.saveAccount()
+                                passWd.setKey(t_input_key.text);
+                                passWd.saveAccount();
+                                
                             }
                         }
                     }
