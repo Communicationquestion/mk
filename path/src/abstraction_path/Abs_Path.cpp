@@ -30,3 +30,8 @@ std::string abstraction_path::Abs_path::get_current_path()
 	std::filesystem::path currentPath = std::filesystem::current_path();
 	return currentPath.string();
 }
+
+std::string abstraction_path::Abs_path::get_exe_path()
+{
+	return std::string();
+}

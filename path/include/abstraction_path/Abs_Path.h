@@ -12,6 +12,7 @@ namespace abstraction_path {
 		std::string get_cmake_path();
 		virtual	void print_path();
 		std::string get_current_path();
+		std::string get_exe_path();
 	private:
 		std::string file_path;
 		std::string CMake_path;

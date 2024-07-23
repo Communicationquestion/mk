@@ -2,7 +2,9 @@
 
 int TranslateCommand::MkRun()
 {
-	toen.translation("翻译");
+
+	//toen.translation("翻译");
+	toen.set_config();
 	return 0;
 }
 int TranslateCommand::MkRun(std::string _receive_commands)
