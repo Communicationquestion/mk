@@ -28,7 +28,7 @@ include_directories(.\\sentencepiece\\include)
 link_directories(.\\sentencepiece\\lib)
 
 
-find_package(Qt6 REQUIRED COMPONENTS Qml)
+find_package(Qt6 REQUIRED COMPONENTS Qml Quick)
 qt_standard_project_setup(REQUIRES 6.7)
 
 # 包含子项目。

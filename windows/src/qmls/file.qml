@@ -20,65 +20,76 @@ Rectangle{
                 ColumnLayout {
                     anchors.centerIn: parent
                     spacing: 10
-                    Rectangle {
+                    //名称
+                    RowLayout{
+                        Rectangle {
+                            width: 100
+                            height: 30
+                            Text {
+                                anchors.fill: parent
+                                text: "名称"
+                                font.pointSize: 15
+                            }
+                        }
+                        Rectangle {
+                            width: 400
+                            height: 30
+                            border.color: "grey"
+                            TextInput {
+                                id: t_input_name
+                                anchors.fill: parent
+                                font.pointSize: 15
+                                focus: true
+                            }
+                        }
+                    }
+                    //账号
+                     RowLayout{
+                       
+                        Rectangle {
+                            width: 100
+                            height: 30
+                            Text {
+                                anchors.fill: parent
+                                text: "账号"
+                                font.pointSize: 15
+                            }
+                        }
+                        Rectangle {
+                            width: 400
+                            height: 30
+                            border.color: "grey"
+                            TextInput {
+                                id: t_input_user
+                                anchors.fill: parent
+                                font.pointSize: 15
+                                focus: true
+                            }
+                        }
+                     }
+                    //密码
+                    RowLayout{
+                       
+                        Rectangle {
+                            width: 100
+                            height: 30
+                            Text {
+                                anchors.fill: parent
+                                text: "password"
+                                font.pointSize: 15
+                            }
+                        }
 
-                        width: 400
-                        height: 30
-                        Text {
-                            anchors.fill: parent
-                            text: "名称"
-                            font.pointSize: 15
-                        }
-                    }
-                    Rectangle {
-                        width: 400
-                        height: 30
-                        border.color: "grey"
-                        TextInput {
-                            id: t_input_name
-                            anchors.fill: parent
-                            font.pointSize: 15
-                            focus: true
-                        }
-                    }
-                    Rectangle {
-                        width: 400
-                        height: 30
-                        Text {
-                            anchors.fill: parent
-                            text: "账号"
-                            font.pointSize: 15
-                        }
-                    }
-                    Rectangle {
-                        width: 400
-                        height: 30
-                        border.color: "grey"
-                        TextInput {
-                            id: t_input_user
-                            anchors.fill: parent
-                            font.pointSize: 15
-                            focus: true
-                        }
-                    }
-                    Rectangle {
-                        width: 400
-                        height: 30
-                        Text {
-                            anchors.fill: parent
-                            text: "password"
-                            font.pointSize: 15
-                        }
-                    }
-                    Rectangle {
-                        width: 400
-                        height: 30
-                        border.color: "grey"
-                        TextInput {
-                            id: t_input_passwd
-                            anchors.fill: parent
-                            font.pointSize: 15
-                            focus: true
+                        Rectangle {
+                            width: 400
+                            height: 30
+                            border.color: "grey"
+                            TextInput {
+                                id: t_input_passwd
+                                anchors.fill: parent
+                                font.pointSize: 15
+                                focus: true
+                            }
                         }
                     }
                 }
@@ -101,7 +112,7 @@ Rectangle{
                             anchors.centerIn: parent
                             text: "Add"
                             onClicked:{
-                                passWd.addAccount(t_input_name.text,t_input_user.text,t_input_passwd.text)
+                                passWd.addAccount                                      (t_input_name.text,t_input_user.text,t_input_passwd.text)  
 
                                 t_input_name.clear()
                                 t_input_user.clear()
