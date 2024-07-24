@@ -3,17 +3,18 @@
 #include <QQmlContext>
 
 int initqmlapp(int argc, char* argv[]) {
-    
-    QGuiApplication app(argc, argv);
-    QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-    qmlRegisterType<Qmlmod::Passwd>("passwd", 1, 0, "PassWd");
-    QQmlApplicationEngine engine;
-    QObject::connect(&engine, &QQmlApplicationEngine::objectCreationFailed,
-    &app, []() { QCoreApplication::exit(-1); },
-    Qt::QueuedConnection);
-    
-    engine.load(".\\windows\\src\\qmls\\Interactive.qml");
 
-    return app.exec();
+	QGuiApplication app(argc, argv);
+	QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+	qmlRegisterType<Qmlmod::Passwd>("passwd", 1, 0, "PassWd");
+	qmlRegisterType<Qmlmod::TxtTable>("txtTable", 1, 0, "TxtTable");
+	QQmlApplicationEngine engine;
+	QObject::connect(&engine, &QQmlApplicationEngine::objectCreationFailed,
+		&app, []() { QCoreApplication::exit(-1); },
+		Qt::QueuedConnection);
+
+	engine.load(".\\windows\\src\\qmls\\Interactive.qml");
+
+	return app.exec();
 }
 

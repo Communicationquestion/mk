@@ -20,8 +20,6 @@ set(CMAKE_AUTORCC ON)       # RCC能被自动执行
 add_compile_options("/permissive-")
 add_compile_options("/Zc:__cplusplus")
 
-
-
 project ("mk")
 INCLUDE_DIRECTORIES(.\\sentencepiece\\include)
 include_directories(.\\sentencepiece\\include)
@@ -42,16 +40,14 @@ add_subdirectory ("Strategy")
 add_subdirectory ("ThirdParty")
 add_subdirectory ("windows")
 
+# Prevent overriding the parent project's compiler/linker settings on Windows.
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+set(install_gtest OFF)
+set(install_gmock OFF)
+set(build_gmock ON)
 
-
-  # Prevent overriding the parent project's compiler/linker settings on Windows.
-  set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-  set(install_gtest OFF)
-  set(install_gmock OFF)
-  set(build_gmock ON)
-
-  # This project is tested using GoogleTest.
-  add_subdirectory("ThirdParty/googletest")
+# This project is tested using GoogleTest.
+add_subdirectory("ThirdParty/googletest")
 
 
 
