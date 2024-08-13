@@ -42,7 +42,7 @@ void Qmlmod::Passwd::saveAccount()
 	
 	for (auto &t : account)
 	{
-		pwContents = pwContents+" "+ t.name + " " + t.user + " " + t.passwd + "\n";
+		pwContents = pwContents+ t.name + " " + t.user + " " + t.passwd + "\n";
 	
 		qDebug() << t.name << t.user << t.passwd;
 	}
@@ -85,6 +85,7 @@ void Qmlmod::Passwd::encipherfile(std::string _path)
 	buffer << readfile.rdbuf();
 	read_cipher_text = buffer.str();
 	readfile.close();
+
 	content1 = read_cipher_text;
 	std::cout << content1 << std::endl;
 	std::string uncoded;

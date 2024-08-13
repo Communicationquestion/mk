@@ -7,4 +7,7 @@ Rectangle{
     width: parent.width
     height: parent.height
     color: "red"
+    Rectangle{
+
+    }
 }
