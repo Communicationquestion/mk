@@ -10,20 +10,20 @@ Qmlmod::Passwd::~Passwd()
 void Qmlmod::Passwd::getInPutTextName(QString _Name)
 {
 	account_item.name = _Name;
-	
+
 }
 
 void Qmlmod::Passwd::getInPutTextUser(QString _User)
 {
 	account_item.user = _User;
-	
+
 }
 
 void Qmlmod::Passwd::getInPutTextpassWd(QString _passWd)
 {
 	account_item.passwd = _passWd;
-	
-	
+
+
 }
 
 void Qmlmod::Passwd::addAccount(QString name, QString user, QString passwd)
@@ -33,24 +33,24 @@ void Qmlmod::Passwd::addAccount(QString name, QString user, QString passwd)
 	getInPutTextpassWd(passwd);
 	qDebug() << account_item.name << account_item.user << account_item.passwd;
 	account.push_back(account_item);
-	
+
 }
 
 void Qmlmod::Passwd::saveAccount()
 {
 	creatpasswd.MkDir("./mkconfig");
-	
-	for (auto &t : account)
+
+	for (auto& t : account)
 	{
-		pwContents = pwContents+ t.name + " " + t.user + " " + t.passwd + "\n";
-	
+		pwContents = pwContents + " " + t.name + " " + t.user + " " + t.passwd + "\n";
+
 		qDebug() << t.name << t.user << t.passwd;
 	}
 
 	std::string plaintext = pwContents.toStdString();
 	std::string key{};
 	key = txtFileKey.toStdString();
-	
+
 	memset(iv, 0x00, CryptoPP::AES::BLOCKSIZE);
 	CryptoPP::CBC_Mode<CryptoPP::AES>::Encryption encryption((byte*)key.c_str(), key.length(), iv);
 	std::string ciphertext{};
@@ -64,7 +64,7 @@ void Qmlmod::Passwd::saveAccount()
 
 	creatpasswd.create_txt("./mkconfig/config.txt", encoded);
 
-	
+
 	encipherfile("./mkconfig/config.txt");
 
 }
@@ -91,7 +91,7 @@ void Qmlmod::Passwd::encipherfile(std::string _path)
 	std::string uncoded;
 	CryptoPP::StringSource Base64String2(content1, true, new CryptoPP::Base64Decoder(new CryptoPP::StringSink(uncoded)));
 
-	std::string ciphertext= uncoded;
+	std::string ciphertext = uncoded;
 	// 解密过程
 	CryptoPP::CBC_Mode<CryptoPP::AES>::Decryption decryption((byte*)key.c_str(), key.length(), iv);
 	std::string decryptedtext{};
@@ -103,9 +103,16 @@ void Qmlmod::Passwd::encipherfile(std::string _path)
 
 Qmlmod::TxtTable::TxtTable(QObject* parent)
 {
+
+}
+
+Q_INVOKABLE std::string Qmlmod::TxtTable::getfilepath()
+{
 	QString file_name = QFileDialog::getOpenFileName(NULL, "标题", ".", "*.txt");
+	return file_name.toStdString();
 }
 
 Qmlmod::TxtTable::~TxtTable()
 {
+
 }

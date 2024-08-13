@@ -6,7 +6,7 @@
 #include<abstraction_create/abstraction_create.h>
 #include <QFileDialog>
 
-namespace Qmlmod  {
+namespace Qmlmod {
 	struct Account
 	{
 		QString name;
@@ -14,14 +14,14 @@ namespace Qmlmod  {
 		QString passwd;
 
 	};
-	
-	class Create : public abstraction_create::Abs_create 
+
+	class Create : public abstraction_create::Abs_create
 	{
 	public:
-		int creta_files(std::string _file_name, std::string _type){
+		int creta_files(std::string _file_name, std::string _type) {
 
 			return 0;
-			}
+		}
 
 	private:
 
@@ -33,18 +33,18 @@ namespace Qmlmod  {
 		Q_OBJECT
 	public:
 		explicit Passwd(QObject* parent = nullptr);
-		
+
 		~Passwd();
 		Q_INVOKABLE void getInPutTextName(QString text);
 		Q_INVOKABLE void getInPutTextUser(QString text);
 		Q_INVOKABLE void getInPutTextpassWd(QString text);
-	
-		Q_INVOKABLE void addAccount(QString name,QString user,QString passwd);
+
+		Q_INVOKABLE void addAccount(QString name, QString user, QString passwd);
 
 		Q_INVOKABLE void saveAccount();
 		Q_INVOKABLE void setKey(QString _key);
 		void encipherfile(std::string _path);
-		
+
 	private:
 		byte iv[CryptoPP::AES::BLOCKSIZE];
 		Account account_item;
@@ -61,13 +61,13 @@ namespace Qmlmod  {
 		Q_OBJECT
 	public:
 		explicit TxtTable(QObject* parent = nullptr);
-
+		Q_INVOKABLE std::string getfilepath();
 		~TxtTable();
 
 
 	private:
 		byte iv[CryptoPP::AES::BLOCKSIZE];
-		Account account_item;
+
 		CryptoPP::XSalsa20::Encryption en;
 		CryptoPP::XSalsa20::Decryption de;
 
