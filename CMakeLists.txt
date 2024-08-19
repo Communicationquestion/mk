@@ -25,6 +25,9 @@ INCLUDE_DIRECTORIES(.\\sentencepiece\\include)
 include_directories(.\\sentencepiece\\include)
 link_directories(.\\sentencepiece\\lib)
 
+INCLUDE_DIRECTORIES(.\\cryptopp\\include)
+include_directories(.\\cryptopp\\include)
+link_directories(.\\cryptopp\\lib)
 
 find_package(Qt6 REQUIRED COMPONENTS Core Quick Gui Widgets)
 qt_standard_project_setup(REQUIRES 6.7)
