@@ -7,6 +7,7 @@
 file(GLOB_RECURSE srcs CONFIGURE_DEPENDS src/*.cpp include/*.h)
 add_library(windows STATIC ${srcs})
 target_include_directories(windows PUBLIC include)
+
 qt_add_qml_module(windows
     URI windows
     VERSION 1.0
@@ -25,5 +26,7 @@ qt_add_qml_module(windows
          src/qmls/Interactive.qml
          src/qmls/txtfileitem.qml
 )
+LINK_DIRECTORIES(D:\\projects\\vs\\mk\\cryptopp\\lib)
+target_link_libraries(windows PUBLIC cryptlib.lib )
 target_link_libraries( windows PUBLIC ThirdParty)
 target_link_libraries( windows PUBLIC create_file)
