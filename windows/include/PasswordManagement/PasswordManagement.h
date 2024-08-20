@@ -1,10 +1,10 @@
 #pragma once
 #include<QObject>
-#include<QString>
 #include<QDebug>
 #include<ThirdParty/thirdparty.h>
 #include<abstraction_create/abstraction_create.h>
 #include <QFileDialog>
+#include <QString>
 
 namespace Qmlmod {
 	struct Account
@@ -60,16 +60,18 @@ namespace Qmlmod {
 	{
 		Q_OBJECT
 	public:
+		Passwd pwdtools;
 		explicit TxtTable(QObject* parent = nullptr);
-		Q_INVOKABLE std::string getfilepath();
-		~TxtTable();
+		Q_INVOKABLE std::string getfilepath(QString _filePath);
+		Q_INVOKABLE void ensrctxt();
+	
 
 
 	private:
+		std::vector<Account> env{};
 		byte iv[CryptoPP::AES::BLOCKSIZE];
-
-		CryptoPP::XSalsa20::Encryption en;
-		CryptoPP::XSalsa20::Decryption de;
+		QString srcfilepath{};
+		
 
 	};
 

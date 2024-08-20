@@ -81,6 +81,10 @@ void Qmlmod::Passwd::encipherfile(std::string _path)
 	std::string content1;
 	std::string read_cipher_text;
 	std::ifstream readfile(_path);
+	if (!readfile.good()) {
+		std::cerr << "encipherfile Failed to open the file \n";
+		return;
+	}
 	std::stringstream buffer;
 	buffer << readfile.rdbuf();
 	read_cipher_text = buffer.str();
@@ -92,6 +96,7 @@ void Qmlmod::Passwd::encipherfile(std::string _path)
 	CryptoPP::StringSource Base64String2(content1, true, new CryptoPP::Base64Decoder(new CryptoPP::StringSink(uncoded)));
 
 	std::string ciphertext = uncoded;
+
 	// 解密过程
 	CryptoPP::CBC_Mode<CryptoPP::AES>::Decryption decryption((byte*)key.c_str(), key.length(), iv);
 	std::string decryptedtext{};
@@ -106,13 +111,17 @@ Qmlmod::TxtTable::TxtTable(QObject* parent)
 
 }
 
-Q_INVOKABLE std::string Qmlmod::TxtTable::getfilepath()
+Q_INVOKABLE std::string Qmlmod::TxtTable::getfilepath(QString _filePath)
 {
-	QString file_name = QFileDialog::getOpenFileName(NULL, "标题", ".", "*.txt");
-	return file_name.toStdString();
+	srcfilepath = _filePath;
+	qDebug() << srcfilepath;
+	return{};
 }
 
-Qmlmod::TxtTable::~TxtTable()
+Q_INVOKABLE void Qmlmod::TxtTable::ensrctxt()
 {
-
+	pwdtools.encipherfile(srcfilepath.toStdString());
+	return Q_INVOKABLE void();
 }
+
+

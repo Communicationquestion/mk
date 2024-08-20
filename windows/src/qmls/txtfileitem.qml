@@ -38,6 +38,8 @@ Rectangle {
             console.log("选中的文件有:")
                 console.log(file)
             loader.source = "main.qml"
+            txtTable.getfilepath(file)
+            txtTable.ensrctxt()
         }
 
     }
