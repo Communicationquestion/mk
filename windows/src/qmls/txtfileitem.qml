@@ -33,7 +33,7 @@ Rectangle {
     FileDialog {
         id: fileDialog
         selectedNameFilter.index: 1
-        nameFilters: ["Text files (*.txt)", "HTML files (*.html *.htm)"]
+        nameFilters: [ "HTML files (*.html *.htm)","Text files (*.txt)"]
         onAccepted: {
             console.log("选中的文件有:")
                 console.log(file)

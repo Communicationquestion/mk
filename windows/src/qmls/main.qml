@@ -9,7 +9,7 @@ Rectangle {
 
 	Rectangle {
 		TableView {
-
+			//model: 
 		}
 	}
 }

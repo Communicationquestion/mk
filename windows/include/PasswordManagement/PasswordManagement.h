@@ -46,7 +46,7 @@ namespace Qmlmod {
 		void encipherfile(std::string _path);
 
 	private:
-		byte iv[CryptoPP::AES::BLOCKSIZE];
+		byte iv[CryptoPP::AES::BLOCKSIZE]{0};
 		Account account_item;
 		CryptoPP::XSalsa20::Encryption en;
 		CryptoPP::XSalsa20::Decryption de;
@@ -69,10 +69,8 @@ namespace Qmlmod {
 
 	private:
 		std::vector<Account> env{};
-		byte iv[CryptoPP::AES::BLOCKSIZE];
+	
 		QString srcfilepath{};
-		
-
 	};
 
 }
