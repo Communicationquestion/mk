@@ -10,3 +10,4 @@ int CmakeCommand::MkRun(std::string _pars)
 {
 	return 0;
 }
+ 

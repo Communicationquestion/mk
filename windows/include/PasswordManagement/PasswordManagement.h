@@ -12,7 +12,6 @@ namespace Qmlmod {
 		QString name;
 		QString user;
 		QString passwd;
-
 	};
 
 	class Create : public abstraction_create::Abs_create
@@ -43,7 +42,7 @@ namespace Qmlmod {
 
 		Q_INVOKABLE void saveAccount();
 		Q_INVOKABLE void setKey(QString _key);
-		void encipherfile(std::string _path);
+		std::string encipherfile(const std::string&& _path);
 
 	private:
 		byte iv[CryptoPP::AES::BLOCKSIZE]{0};
@@ -54,22 +53,20 @@ namespace Qmlmod {
 		QString txtFileKey;
 		Create creatpasswd;
 		QString pwContents{};
+		
 	};
 
 	class TxtTable : public QObject
 	{
 		Q_OBJECT
 	public:
-		Passwd pwdtools;
+		
 		explicit TxtTable(QObject* parent = nullptr);
 		Q_INVOKABLE std::string getfilepath(QString _filePath);
 		Q_INVOKABLE void ensrctxt();
-	
-
-
 	private:
 		std::vector<Account> env{};
-	
+		Passwd pwdtools;
 		QString srcfilepath{};
 	};
 

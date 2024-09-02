@@ -42,7 +42,7 @@ void Qmlmod::Passwd::saveAccount()
 
 	for (auto& t : account)
 	{
-		pwContents = pwContents + " " + t.name + " " + t.user + " " + t.passwd + "\n";
+		pwContents = pwContents + t.name + " " + t.user + " " + t.passwd + "\n";
 
 		qDebug() << t.name << t.user << t.passwd;
 	}
@@ -65,7 +65,7 @@ void Qmlmod::Passwd::saveAccount()
 	creatpasswd.create_txt("./mkconfig/config.txt", encoded);
 
 
-	encipherfile("./mkconfig/config.txt");
+	//encipherfile("./mkconfig/config.txt");
 
 }
 
@@ -74,7 +74,7 @@ Q_INVOKABLE void Qmlmod::Passwd::setKey(QString _key)
 	txtFileKey = _key;
 }
 
-void Qmlmod::Passwd::encipherfile(std::string _path)
+std::string Qmlmod::Passwd::encipherfile(const std::string&& _path)
 {
 	std::string key;
 	std::cin >> key;
@@ -83,7 +83,7 @@ void Qmlmod::Passwd::encipherfile(std::string _path)
 	std::ifstream readfile(_path);
 	if (!readfile.good()) {
 		std::cerr << "encipherfile Failed to open the file \n";
-		return;
+		return {};
 	}
 	std::stringstream buffer;
 	buffer << readfile.rdbuf();
@@ -93,7 +93,7 @@ void Qmlmod::Passwd::encipherfile(std::string _path)
 	content1 = read_cipher_text;
 	std::cout << content1 << std::endl;
 	std::string uncoded{};
-	content1 = "NfZssOof1jET3bECTyL8Xg==";
+	//content1 = "NfZssOof1jET3bECTyL8Xg==";
 	CryptoPP::StringSource Base64String2(content1, true, new CryptoPP::Base64Decoder(new CryptoPP::StringSink(uncoded)));
 
 	std::string ciphertext = uncoded;
@@ -103,8 +103,9 @@ void Qmlmod::Passwd::encipherfile(std::string _path)
 	std::string decryptedtext{};
 	CryptoPP::StringSource(ciphertext, true, new CryptoPP::StreamTransformationFilter(decryption, new CryptoPP::StringSink(decryptedtext)));
 
-	// 打印解密后的明文
-	std::cout << "res------: \n" << decryptedtext << "\n";
+	
+	return decryptedtext;
+
 }
 
 Qmlmod::TxtTable::TxtTable(QObject* parent)
@@ -121,9 +122,12 @@ Q_INVOKABLE std::string Qmlmod::TxtTable::getfilepath(QString _filePath)
 
 Q_INVOKABLE void Qmlmod::TxtTable::ensrctxt()
 {
-	srcfilepath = srcfilepath.remove(0, 8);
-	qDebug() << srcfilepath << "\n";
-	pwdtools.encipherfile(srcfilepath.toStdString());
+	std::string ed_str = std::move(pwdtools.encipherfile(srcfilepath.remove(0, 8).toStdString()));
+	for (auto& c : ed_str) {
+		std::cout << c;
+	}
+	
+
 	return Q_INVOKABLE void();
 }
 
