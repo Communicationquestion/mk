@@ -125,6 +125,7 @@ Q_INVOKABLE void Qmlmod::TxtTable::ensrctxt()
 	std::string ed_str = std::move(pwdtools.encipherfile(srcfilepath.remove(0, 8).toStdString()));
 	for (auto& c : ed_str) {
 		std::cout << c;
+		
 	}
 	
 
