@@ -1,4 +1,5 @@
 #pragma once
+#include<PasswordManagement/passwdTxt.h>
 #include<QObject>
 #include<QDebug>
 #include<ThirdParty/thirdparty.h>
@@ -68,6 +69,7 @@ namespace Qmlmod {
 		std::vector<Account> env{};
 		Passwd pwdtools;
 		QString srcfilepath{};
+		edtxt::edtxtfile<Account> edf{};
 	};
 
 }

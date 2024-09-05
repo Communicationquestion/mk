@@ -122,11 +122,8 @@ Q_INVOKABLE std::string Qmlmod::TxtTable::getfilepath(QString _filePath)
 
 Q_INVOKABLE void Qmlmod::TxtTable::ensrctxt()
 {
-	std::string ed_str = std::move(pwdtools.encipherfile(srcfilepath.remove(0, 8).toStdString()));
-	for (auto& c : ed_str) {
-		std::cout << c;
-		
-	}
+	//std::string ed_str = pwdtools.encipherfile(srcfilepath.remove(0, 8).toStdString());
+	edf.txttoitem(pwdtools.encipherfile(srcfilepath.remove(0, 8).toStdString()));
 	
 
 	return Q_INVOKABLE void();
