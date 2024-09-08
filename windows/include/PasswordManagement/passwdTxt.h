@@ -2,28 +2,57 @@
 #include<iostream>
 #include<string>
 #include<vector>
+#include<qstring.h>
 namespace edtxt {
 	template <class T>
 	class edtxtfile
 	{
 	public:
-		std::vector<T> txttoitem(std::string&& str) {
-			std::stringstream ss(str);
-			std::string line;
-			while (std::getline(ss, line, '\n')) {
+		T txttoitem(std::string&& str, std::vector& vec) {
+			return [&vec, &str]()->std::vector<T> {
+
+
+
+
+
+
+
+
+				};
+		}
+		T itemtostruct(std::string&& line) {
+			return [&line]()-> T {
 				auto name = [&line]()->std::string {
-					//取得空格前的字串
 					auto pos = line.find(' ');
 					if (pos != std::string::npos) {
 						return line.substr(0, pos);
 					}
-					}; 
-
-				//auto user = 
-				//auto passwd = 
-			}
-			return std::vector<T>{};
+					else {
+						return "";
+					}
+					}();
+				auto user = [&line]()->std::string {
+					auto pos = line.find(' ');
+					if (pos != std::string::npos) {
+						return line.substr(0, pos);
+					}
+					else {
+						return "";
+					}
+					}();
+				auto passwd = [&line]()->std::string {
+					auto pos = line.find(' ');
+					if (pos != std::string::npos) {
+						return line.substr(0, pos);
+					}
+					else {
+						return "";
+					}
+					}();
+				return { QString::fromStdString(std::move(name)), QString::fromStdString(std::move(user)), QString::fromStdString(std::move(passwd)) };
+				}();
 		}
+
 	private:
 
 	};
