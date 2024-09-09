@@ -1,33 +1,27 @@
 #pragma once
 #include<PasswordManagement/PasswordManagement.h>
 
-Qmlmod::Passwd::Passwd(QObject* parent) : QObject(parent)
-{
+Qmlmod::Passwd::Passwd(QObject* parent) : QObject(parent) {
 }
-Qmlmod::Passwd::~Passwd()
-{
+Qmlmod::Passwd::~Passwd() {
 }
-void Qmlmod::Passwd::getInPutTextName(QString _Name)
-{
+void Qmlmod::Passwd::getInPutTextName(QString _Name) {
 	account_item.name = _Name;
 
 }
 
-void Qmlmod::Passwd::getInPutTextUser(QString _User)
-{
+void Qmlmod::Passwd::getInPutTextUser(QString _User) {
 	account_item.user = _User;
 
 }
 
-void Qmlmod::Passwd::getInPutTextpassWd(QString _passWd)
-{
+void Qmlmod::Passwd::getInPutTextpassWd(QString _passWd) {
 	account_item.passwd = _passWd;
 
 
 }
 
-void Qmlmod::Passwd::addAccount(QString name, QString user, QString passwd)
-{
+void Qmlmod::Passwd::addAccount(QString name, QString user, QString passwd) {
 	getInPutTextName(name);
 	getInPutTextUser(user);
 	getInPutTextpassWd(passwd);
@@ -36,12 +30,10 @@ void Qmlmod::Passwd::addAccount(QString name, QString user, QString passwd)
 
 }
 
-void Qmlmod::Passwd::saveAccount()
-{
+void Qmlmod::Passwd::saveAccount() {
 	creatpasswd.MkDir("./mkconfig");
 
-	for (auto& t : account)
-	{
+	for (auto& t : account) {
 		pwContents = pwContents + t.name + " " + t.user + " " + t.passwd + "\n";
 
 		qDebug() << t.name << t.user << t.passwd;
@@ -69,13 +61,11 @@ void Qmlmod::Passwd::saveAccount()
 
 }
 
-Q_INVOKABLE void Qmlmod::Passwd::setKey(QString _key)
-{
+Q_INVOKABLE void Qmlmod::Passwd::setKey(QString _key) {
 	txtFileKey = _key;
 }
 
-std::string Qmlmod::Passwd::encipherfile(const std::string&& _path)
-{
+std::string Qmlmod::Passwd::encipherfile(const std::string&& _path) {
 	std::string key;
 	std::cin >> key;
 	std::string content1;
@@ -103,31 +93,28 @@ std::string Qmlmod::Passwd::encipherfile(const std::string&& _path)
 	std::string decryptedtext{};
 	CryptoPP::StringSource(ciphertext, true, new CryptoPP::StreamTransformationFilter(decryption, new CryptoPP::StringSink(decryptedtext)));
 
-	
+
 	return decryptedtext;
 
 }
 
-Qmlmod::TxtTable::TxtTable(QObject* parent)
-{
+Qmlmod::TxtTable::TxtTable(QObject* parent) {
 
 }
 
-Q_INVOKABLE std::string Qmlmod::TxtTable::getfilepath(QString _filePath)
-{
+Q_INVOKABLE std::string Qmlmod::TxtTable::getfilepath(QString _filePath) {
 	srcfilepath = _filePath;
 	qDebug() << srcfilepath;
 	return{};
 }
 
-Q_INVOKABLE void Qmlmod::TxtTable::ensrctxt()
-{
-	//std::string ed_str = pwdtools.encipherfile(srcfilepath.remove(0, 8).toStdString());
-	
+Q_INVOKABLE void Qmlmod::TxtTable::ensrctxt() {
 
-	std::cout<<edf.txttoitem(pwdtools.encipherfile(srcfilepath.remove(0, 8).toStdString()));
-	//items.push_back()
+	edf.txttoitem(pwdtools.encipherfile(srcfilepath.remove(0, 8).toStdString()), env);
 
+	for (auto& i : env) {
+		qDebug() << i.name << i.user << i.passwd << "\n";
+	}
 	return Q_INVOKABLE void();
 }
 

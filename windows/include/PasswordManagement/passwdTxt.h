@@ -5,21 +5,17 @@
 #include<qstring.h>
 namespace edtxt {
 	template <class T>
-	class edtxtfile
-	{
+	class edtxtfile {
 	public:
-		T txttoitem(std::string&& str, std::vector& vec) {
-			return [&vec, &str]()->std::vector<T> {
-
-
-
-
-
-
-
-
-				};
+		void txttoitem(std::string&& str, std::vector<T>& vec) {
+			std::string token;
+			std::istringstream tokenStream(str);
+			while (std::getline(tokenStream, token, '\n')) {
+				vec.push_back(itemtostruct(std::move(token)));
+			}
+			return;
 		}
+
 		T itemtostruct(std::string&& line) {
 			return [&line]()-> T {
 				auto name = [&line]()->std::string {
@@ -41,7 +37,7 @@ namespace edtxt {
 					}
 					}();
 				auto passwd = [&line]()->std::string {
-					auto pos = line.find(' ');
+					auto pos = line.find(' '); 
 					if (pos != std::string::npos) {
 						return line.substr(0, pos);
 					}

@@ -19,19 +19,26 @@ Rectangle {
 
     model: TableModel {
         TableModelColumn { display: "name" }
-        TableModelColumn { display: "color" }
+        TableModelColumn { display: "user" }
+         TableModelColumn { display: "passwd" }
 
         rows: [
             {
                 "name": "cat",
+                "user": "1",
+                "passwd": "ddf",
                 "color": "black"
             },
             {
                 "name": "dog",
+                "user": "1",
+                "passwd": "ddf",
                 "color": "brown"
             },
             {
                 "name": "bird",
+                "user": "1",
+                "passwd": "ddf",
                 "color": "white"
             }
         ]
