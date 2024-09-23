@@ -20,7 +20,7 @@ Rectangle {
     model: TableModel {
         TableModelColumn { display: "name" }
         TableModelColumn { display: "user" }
-         TableModelColumn { display: "passwd" }
+        TableModelColumn { display: "passwd" }
 
         rows: [
             {
