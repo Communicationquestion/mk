@@ -33,17 +33,11 @@ int main(int argc, char* argv[])
 	std::string _cmd = v_commands.at(0);
 
 
-
-
 	MkCommandStrategy::CMKCommandStrategy test(_cmd);
 	
 	test.initmap();
 	//test.add("cmake", new CmakeCommand);
 	test.execute(v_commands);
-
-
-
-
 
 	return 0;
 }
