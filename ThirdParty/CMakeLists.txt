@@ -1,6 +1,6 @@
 
 file(GLOB_RECURSE srcs CONFIGURE_DEPENDS src/*.cpp include/*.h)
-add_library(ThirdParty STATIC ${srcs})
+add_library(ThirdParty STATIC ${srcs} "../windows/include/wbg/global.h")
 
 find_package(ctranslate2 REQUIRED)
 target_link_libraries(ThirdParty PUBLIC CTranslate2::ctranslate2)

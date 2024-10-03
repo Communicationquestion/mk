@@ -29,6 +29,10 @@ INCLUDE_DIRECTORIES(.\\cryptopp\\include)
 include_directories(.\\cryptopp\\include)
 link_directories(.\\cryptopp\\lib)
 
+INCLUDE_DIRECTORIES(C:\\Users\\alisy\\Desktop\\work\\boost_1_86_0)
+include_directories(C:\\Users\\alisy\\Desktop\\work\\boost_1_86_0)
+link_directories(C:\\Users\\alisy\\Desktop\\work\\boost_1_86_0\\stage\\lib)
+
 find_package(Qt6 REQUIRED COMPONENTS Core Quick Gui Widgets)
 qt_standard_project_setup(REQUIRES 6.7)
 

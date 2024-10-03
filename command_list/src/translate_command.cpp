@@ -76,8 +76,7 @@ void atomizationCmd_translate::AtomCmdTranslate::set_config()
 }
 void atomizationCmd_translate::AtomCmdTranslate::set_config(std::string _path)
 {
-
-
+    addlanguage(getcwd());
 }
 void atomizationCmd_translate::AtomCmdTranslate::addlanguage(std::string _path)
 {

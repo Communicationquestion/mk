@@ -25,6 +25,9 @@ qt_add_qml_module(windows
          src/qmls/file.qml
          src/qmls/Interactive.qml
          src/qmls/txtfileitem.qml
+
+    RESOURCES
+
 )
 LINK_DIRECTORIES(D:\\projects\\vs\\mk\\cryptopp\\lib)
 target_link_libraries(windows PUBLIC cryptlib.lib )
