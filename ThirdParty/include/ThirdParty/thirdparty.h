@@ -1,5 +1,6 @@
 #pragma once
 #include <ctranslate2/translator.h>
+#include <sentencepiece_processor.h>
 #include <qstring.h>
 #include <string.h>
 #include <stdlib.h>
@@ -18,6 +19,7 @@
 #include <cryptopp/osrng.h>
 #include <cryptopp/secblock.h>
 
+
 std::string GbkToUtf8(const char* src_str);
 int run(const char* cmd);
 void TextTurnsSound(std::string _txt);
@@ -28,6 +30,7 @@ std::string exec_cmd(const char* cmd);
 inline std::string getcwd() {
    
 	wchar_t buffer[MAX_PATH];
+
 	GetModuleFileName(NULL, buffer, MAX_PATH);
 
 	QString s = QString::fromWCharArray(buffer).remove(s.length() - 6, 6).replace("\\", "/");

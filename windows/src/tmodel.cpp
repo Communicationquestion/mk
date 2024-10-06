@@ -6,6 +6,7 @@ Tmodel::Tmodel(QObject *parent)
 
 QVariant Tmodel::headerData(int section, Qt::Orientation orientation, int role) const
 {
+    return QVariant();
     // FIXME: Implement me!
 }
 
@@ -15,6 +16,7 @@ int Tmodel::rowCount(const QModelIndex &parent) const
     // other (valid) parents, rowCount() should return 0 so that it does not become a tree model.
     if (parent.isValid())
         return 0;
+    return 0;
 
     // FIXME: Implement me!
 }

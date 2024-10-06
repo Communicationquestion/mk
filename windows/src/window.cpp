@@ -5,11 +5,7 @@
 #include<PasswordManagement/PasswordManagement.h>
 #include <qstring>
 #include <windows.h>
-#include <boost/locale.hpp>
 
-
-using boost::locale::conv::to_utf;
-using boost::locale::conv::from_utf;
 int initqmlapp(int argc, char* argv[]) {
 
 	QGuiApplication app(argc, argv);

@@ -112,14 +112,12 @@ Q_INVOKABLE std::string Qmlmod::TxtTable::getfilepath(QString _filePath) {
 Q_INVOKABLE void Qmlmod::TxtTable::ensrctxt() {
 
 	edf.txttoitem(pwdtools.encipherfile(srcfilepath.remove(0, 8).toStdString()), env);
-	
+	myenv->clear();
 	for (auto& i : env) {
 		
 		qDebug() << i.name << i.user << i.passwd << "\n";
 		myenv->push_back({ i.name,i.user,i.passwd });
 	}
-
-
 }
 
 

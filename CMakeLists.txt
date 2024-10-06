@@ -2,16 +2,27 @@
 # 并包含子项目。
 #
 cmake_minimum_required (VERSION 3.8)
-add_compile_options("$<$<C_COMPILER_ID:MSVC>:/utf-8>")
-add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
+if (POLICY CMP0141)
+  cmake_policy(SET CMP0141 NEW)
+  set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
+ 
+endif()
+if (POLICY CMP0141)
+    add_compile_options(/Zc:preprocessor /utf-8 /DNOMINMAX /D_USE_MATH_DEFINES /EHsc /bigobj)
+else()
+    if (WIN32)
+        add_compile_options(-finput-charset=utf-8 -fexec-charset=utf-8 /w)
+    else()
+        add_compile_options(-Wall -Wextra -Werror=return-type)
+    endif()
+endif()
+
 set(GOOGLETEST_VERSION 1.11.0)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-set(CMAKE_PREFIX_PATH "C:/Qt/6.7.2/msvc2019_64/lib/cmake")
-set(DQT_QMAKE_EXECUTABLE "C:/Qt/6.7.2/msvc2019_64/bin/qmake.exe")
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_AUTOUIC ON)       # UIC能被自动执行
 set(CMAKE_AUTOMOC ON)       # MOC能被自动执行
@@ -19,23 +30,20 @@ set(CMAKE_AUTORCC ON)       # RCC能被自动执行
 
 add_compile_options("/permissive-")
 add_compile_options("/Zc:__cplusplus")
+#set(DCMAKE_TOOLCHAIN_FILE: $ENV{})
 
+
+#set(CMAKE_PREFIX_PATH "C:/Qt/6.7.2/msvc2019_64/lib/cmake")
 project ("mk")
+
 INCLUDE_DIRECTORIES(.\\sentencepiece\\include)
 include_directories(.\\sentencepiece\\include)
 link_directories(.\\sentencepiece\\lib)
 
-INCLUDE_DIRECTORIES(.\\cryptopp\\include)
-include_directories(.\\cryptopp\\include)
-link_directories(.\\cryptopp\\lib)
-
-INCLUDE_DIRECTORIES(C:\\Users\\alisy\\Desktop\\work\\boost_1_86_0)
-include_directories(C:\\Users\\alisy\\Desktop\\work\\boost_1_86_0)
-link_directories(C:\\Users\\alisy\\Desktop\\work\\boost_1_86_0\\stage\\lib)
-
 find_package(Qt6 REQUIRED COMPONENTS Core Quick Gui Widgets)
 qt_standard_project_setup(REQUIRES 6.7)
 
+add_subdirectory("ThirdParty/googletest")
 # 包含子项目。
 
 add_subdirectory ("mk")
@@ -53,8 +61,7 @@ set(install_gtest OFF)
 set(install_gmock OFF)
 set(build_gmock ON)
 
-# This project is tested using GoogleTest.
-add_subdirectory("ThirdParty/googletest")
+
 
 
 

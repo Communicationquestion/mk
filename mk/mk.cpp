@@ -6,7 +6,6 @@
 #include<mk_command_strategy/mk_command_strategy.h>
 #include<commands/cmake_command.h>
 #include <gtest/gtest.h>
-
 void test() {
 
 	MkCommandStrategy::CMKCommandStrategy test("passwd");
@@ -20,7 +19,7 @@ int main(int argc, char* argv[])
 	//initqmlapp(argc,argv );
 	std::vector<std::string> v_commands{};
 	if (argc < 2) {
-		test();
+		//test();
 		printf("error\n");
 		return 0;
 	}

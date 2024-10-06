@@ -2,7 +2,7 @@
 #include<iostream>
 #include<ThirdParty/thirdparty.h>
 #include<abstraction_command/abstraction_command.h>
-#include<sentencepiece_processor.h>
+
 #include<abstraction_path/Abs_Path.h>
   
 
