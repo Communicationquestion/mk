@@ -14,8 +14,7 @@ find_package(OpenCV CONFIG REQUIRED)
   # note: 10 additional targets are not displayed.
 target_link_libraries(ThirdParty PUBLIC opencv_ml opencv_dnn opencv_core opencv_flann)
 
-find_package( Boost  CONFIG REQUIRED )
-target_link_libraries(ThirdParty PUBLIC Boost::boost Boost::headers)
+
 
 find_package(cryptopp CONFIG REQUIRED)
 target_link_libraries(ThirdParty PUBLIC cryptopp::cryptopp)

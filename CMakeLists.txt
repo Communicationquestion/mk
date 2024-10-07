@@ -40,6 +40,10 @@ INCLUDE_DIRECTORIES(.\\sentencepiece\\include)
 include_directories(.\\sentencepiece\\include)
 link_directories(.\\sentencepiece\\lib)
 
+INCLUDE_DIRECTORIES(D:\\projects\\work\\boost_1_86_0)
+include_directories(D:\\projects\\work\\boost_1_86_0)
+link_directories(D:\\projects\\work\\boost_1_86_0\\stage\\lib)
+
 find_package(Qt6 REQUIRED COMPONENTS Core Quick Gui Widgets)
 qt_standard_project_setup(REQUIRES 6.7)
 

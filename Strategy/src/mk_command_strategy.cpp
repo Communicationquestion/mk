@@ -4,6 +4,7 @@
 #include<commands/gcc_command.h>
 #include<commands/translate_command.h>
 #include<commands/passwd_set.h>
+#include <boost/locale/encoding.hpp>
 int MkCommandStrategy::CMKCommandStrategy::execute(std::vector<std::string> v_command)
 {
 
@@ -12,14 +13,16 @@ int MkCommandStrategy::CMKCommandStrategy::execute(std::vector<std::string> v_co
 		return 0;
 	}
 	else if (1 < v_command.size()) {
-		std::string cmd{};
-		int i = 1;
-		for ( ; i < v_command.size()-1;  i++)
+		std::string cmd{ v_command.at(1)};
+		
+		for (int i = 3 ; i <= v_command.size();  ++i)
 		{
-			cmd = cmd + v_command.at(i)+" ";
+			cmd = cmd+" "+ v_command.at(i - 1);
 		}
-		cmd = cmd + v_command.at(i);
-		//std::cout << "cmd  " << cmd << std::endl;
+		//cmd = cmd + v_command.at(i);
+		
+		cmd = boost::locale::conv::between(cmd,"UTF-8","GBK");
+		//std::cout << "cmd:" << cmd << std::endl;
 		getmap()[v_command.at(0)]->MkRun(cmd);
 		return 0;
 	}

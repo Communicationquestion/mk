@@ -18,7 +18,8 @@
 #include <cryptopp/salsa.h>
 #include <cryptopp/osrng.h>
 #include <cryptopp/secblock.h>
-
+#include <boost/locale/encoding.hpp>
+#include <boost/algorithm/string.hpp>
 
 std::string GbkToUtf8(const char* src_str);
 int run(const char* cmd);
