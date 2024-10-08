@@ -1,8 +1,8 @@
 #pragma once
 #include <map>
 #include <string>
-#include<vector>
-#include<common_command/common_command.h>
+#include <vector>
+#include <common_command/common_command.h>
 namespace AbsStratety {
 	class CAbsStratry
 	{

@@ -5,7 +5,7 @@
 #target_include_directories(windows PUBLIC include)
 
 file(GLOB_RECURSE srcs CONFIGURE_DEPENDS src/*.cpp include/*.h)
-add_library(windows STATIC ${srcs})
+add_library(windows STATIC ${srcs} "include/imgtotxt/imgtotxt.h")
 target_include_directories(windows PUBLIC include)
 
 qt_add_qml_module(windows
@@ -25,8 +25,11 @@ qt_add_qml_module(windows
          src/qmls/file.qml
          src/qmls/Interactive.qml
          src/qmls/txtfileitem.qml
+
+    RESOURCES
+
 )
-LINK_DIRECTORIES(D:\\projects\\vs\\mk\\cryptopp\\lib)
-target_link_libraries(windows PUBLIC cryptlib.lib )
+
+
 target_link_libraries( windows PUBLIC ThirdParty)
 target_link_libraries( windows PUBLIC create_file)

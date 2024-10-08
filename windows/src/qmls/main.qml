@@ -1,59 +1,103 @@
-import QtQuick
-import QtQuick.Controls
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
 import Qt.labs.qmlmodels
+import MyModel 1.0
+
 Rectangle {
-	color: "lightblue"
-	height: Screen.height / 2
+	anchors.fill: parent
+	height: parent.height
 	visible: true
-	width: Screen.width / 2
+	width: parent.width
+
+	Component.onCompleted: {
+		MyListModel.init_data();
+	}
 
 	Rectangle {
-       
-        width: parent.width/10
-        anchors.fill: parent
-		TableView {
-    anchors.fill: parent
-    columnSpacing: 1
-    rowSpacing: 1
-    clip: true
+		anchors.fill: parent
+		height: parent.height
+		width: parent.width
 
-    model: TableModel {
-        TableModelColumn { display: "name" }
-        TableModelColumn { display: "user" }
-        TableModelColumn { display: "passwd" }
+		ListView {
+			id: listView
 
-        rows: [
-            {
-                "name": "cat",
-                "user": "1",
-                "passwd": "ddf",
-                "color": "black"
-            },
-            {
-                "name": "dog",
-                "user": "1",
-                "passwd": "ddf",
-                "color": "brown"
-            },
-            {
-                "name": "bird",
-                "user": "1",
-                "passwd": "ddf",
-                "color": "white"
-            }
-        ]
-    }
+			anchors.fill: parent
+			height: parent.height
+			model: MyListModel
+			width: parent.width
 
-    delegate: Rectangle {
-        implicitWidth: 100
-        implicitHeight: 50
-        border.width: 1
+			delegate: Item {
+				height: 80
+				width: listView.width
 
-        Text {
-            text: display
-            anchors.centerIn: parent
-        }
-    }
-}
+				RowLayout {
+					anchors.fill: parent
+					height: parent.height
+					width: parent.width
+
+					Rectangle {
+						id: itemRect
+
+						border.color: "#cccccc"
+						border.width: 1
+						color: "#ffffff"
+						height: parent.height
+						radius: 8
+						width: parent.width / 3
+
+						gradient: Gradient {
+							GradientStop {
+								color: "#f0f0f0"
+								position: 0.0
+							}
+							GradientStop {
+								color: "#ffffff"
+								position: 1.0
+							}
+						}
+						Behavior on opacity {
+							NumberAnimation {
+								duration: 250
+								easing.type: Easing.InOutQuad
+							}
+						}
+
+						MouseArea {
+							anchors.fill: parent
+
+							onClicked: {}
+							onPressed: {
+								itemRect.scale = 0.95;
+							}
+							onReleased: {
+								itemRect.scale = 1;
+							}
+						}
+						Column {
+							anchors.fill: parent
+							padding: 10
+							spacing: 5
+
+							Text {
+								font.bold: true
+								font.pointSize: 10
+								text: name
+							}
+							Text {
+								font.bold: true
+								font.pointSize: 10
+								text: user
+							}
+							Text {
+								font.bold: true
+								font.pointSize: 10
+								text: passwd
+							}
+						}
+					}
+				}
+			}
+		}
 	}
 }

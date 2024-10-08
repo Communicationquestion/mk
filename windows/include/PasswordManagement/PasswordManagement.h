@@ -6,15 +6,14 @@
 #include<abstraction_create/abstraction_create.h>
 #include <QFileDialog>
 #include <QString>
-
+#include <wbg/global.h>
 namespace Qmlmod {
-	struct Account
-	{
+	struct Account {
 		QString name;
 		QString user;
 		QString passwd;
-	};
 
+	};
 	class Create : public abstraction_create::Abs_create
 	{
 	public:
@@ -70,6 +69,7 @@ namespace Qmlmod {
 		Passwd pwdtools;
 		QString srcfilepath{};
 		edtxt::edtxtfile<Account> edf{};
+		
 	};
 
 }

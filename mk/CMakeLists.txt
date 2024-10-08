@@ -16,6 +16,7 @@ target_link_libraries( mk PUBLIC command_list)
 target_link_libraries( mk PUBLIC Strategy)
 target_link_libraries( mk PUBLIC ThirdParty)
 target_link_libraries( mk PUBLIC windows)
+
 # TODO: 如有需要，请添加测试并安装目标。
 
 

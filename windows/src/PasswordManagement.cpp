@@ -1,6 +1,7 @@
 #pragma once
 #include<PasswordManagement/PasswordManagement.h>
-
+#include<iostream>
+std::vector<Account> * myenv= new std::vector<Account>;
 Qmlmod::Passwd::Passwd(QObject* parent) : QObject(parent) {
 }
 Qmlmod::Passwd::~Passwd() {
@@ -57,7 +58,7 @@ void Qmlmod::Passwd::saveAccount() {
 	creatpasswd.create_txt("./mkconfig/config.txt", encoded);
 
 
-	//encipherfile("./mkconfig/config.txt");
+
 
 }
 
@@ -111,11 +112,12 @@ Q_INVOKABLE std::string Qmlmod::TxtTable::getfilepath(QString _filePath) {
 Q_INVOKABLE void Qmlmod::TxtTable::ensrctxt() {
 
 	edf.txttoitem(pwdtools.encipherfile(srcfilepath.remove(0, 8).toStdString()), env);
-
+	myenv->clear();
 	for (auto& i : env) {
+		
 		qDebug() << i.name << i.user << i.passwd << "\n";
+		myenv->push_back({ i.name,i.user,i.passwd });
 	}
-	return Q_INVOKABLE void();
 }
 
 
