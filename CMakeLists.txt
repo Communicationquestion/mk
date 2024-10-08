@@ -5,7 +5,7 @@ cmake_minimum_required (VERSION 3.8)
 if (POLICY CMP0141)
   cmake_policy(SET CMP0141 NEW)
   set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
- 
+  
 endif()
 if (POLICY CMP0141)
     add_compile_options(/Zc:preprocessor /utf-8 /DNOMINMAX /D_USE_MATH_DEFINES /EHsc /bigobj)
@@ -27,7 +27,6 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_AUTOUIC ON)       # UIC能被自动执行
 set(CMAKE_AUTOMOC ON)       # MOC能被自动执行
 set(CMAKE_AUTORCC ON)       # RCC能被自动执行
-
 add_compile_options("/permissive-")
 add_compile_options("/Zc:__cplusplus")
 #set(DCMAKE_TOOLCHAIN_FILE: $ENV{})
@@ -40,9 +39,9 @@ INCLUDE_DIRECTORIES(.\\sentencepiece\\include)
 include_directories(.\\sentencepiece\\include)
 link_directories(.\\sentencepiece\\lib)
 
-INCLUDE_DIRECTORIES(C:\\boost-1.86.0)
-include_directories(C:\\boost-1.86.0)
-link_directories(C:\\boost-1.86.0\\stage\\lib)
+INCLUDE_DIRECTORIES(C:\\boost_1_86_0)
+include_directories(C:\\boost_1_86_0)
+link_directories(C:\\boost_1_86_0\\stage\\lib)
 
 find_package(Qt6 REQUIRED COMPONENTS Core Quick Gui Widgets)
 qt_standard_project_setup(REQUIRES 6.7)
