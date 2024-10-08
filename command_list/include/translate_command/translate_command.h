@@ -29,8 +29,8 @@ namespace atomizationCmd_translate {
 		void addlanguage(std::string _disk_path);
 		void set_config(std::string _path);
 		void set_config();
-		void output(std::vector<std::string> &&_output);
-		std::string translationSentences(std::string &src);
+
+
 
 
 	private: 
@@ -53,20 +53,18 @@ namespace atomizationCmd_translate {
 		ctranslate2::Translator *translator=nullptr;
 		sentencepiece::SentencePieceProcessor processor;
 		sentencepiece::SentencePieceProcessor resprocessor;
-		std::vector < std::vector<std::string>> target_prefix{  };
-		ctranslate2::TranslationOptions options;
+
 	};
 
 	class StrPrse {
 	public:
-		StrPrse(std::string&& str,std::string && _type) :strs(std::move(str)),l_type(_type) {
-			
+		StrPrse(std::string&& str) {
+			strs = std::move(str);
 		}
 		std::vector<std::string> strslice();
 	private:
-		std::string l_type;
 		std::string strs;
-		std::vector<std::string> vstrs{};
+		std::vector<std::string> vstrs;
 	};
 
 }

@@ -1,12 +1,10 @@
 #pragma once
-#include <basewindows/basewindows.h>
+#include<basewindows/basewindows.h>
 #include <QQmlContext>
 #include <basewindows/abmodel.h>
 #include<PasswordManagement/PasswordManagement.h>
 #include <qstring>
 #include <windows.h>
-#include <qguiapplication.h>
-#include <QQmlApplicationEngine>
 
 int initqmlapp(int argc, char* argv[]) {
 
