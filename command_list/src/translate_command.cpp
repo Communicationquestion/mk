@@ -37,6 +37,9 @@ atomizationCmd_translate::AtomCmdTranslate::AtomCmdTranslate(std::string _type) 
 }
 
 void atomizationCmd_translate::AtomCmdTranslate::translation(std::string _input) {
+
+
+
 	processor.Encode(_input, &pieces);
 
 
@@ -103,4 +106,24 @@ void atomizationCmd_translate::AtomCmdTranslate::addlanguage(std::string _path) 
 atomizationCmd_translate::AtomCmdTranslate::~AtomCmdTranslate() {
 	delete translator;
 	translator = nullptr;
+}
+std::vector<std::string> atomizationCmd_translate::StrPrse::strslice() {
+
+
+
+	
+
+		return [&]() -> std::vector<std::string> {
+			
+
+
+
+			return vstrs; 
+		}();  
+		
+		
+	
+	
+	
+
 }
