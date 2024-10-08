@@ -56,5 +56,16 @@ namespace atomizationCmd_translate {
 
 	};
 
+	class StrPrse {
+	public:
+		StrPrse(std::string&& str) {
+			strs = std::move(str);
+		}
+		std::vector<std::string> strslice();
+	private:
+		std::string strs;
+		std::vector<std::string> vstrs;
+	};
+
 }
 
