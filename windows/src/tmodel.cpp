@@ -5,7 +5,7 @@ Tmodel::Tmodel(QObject *parent)
 {}
 
 QVariant Tmodel::headerData(int section, Qt::Orientation orientation, int role) const
-{
+{   
     // FIXME: Implement me!
 }
 
@@ -23,7 +23,7 @@ QVariant Tmodel::data(const QModelIndex &index, int role) const
 {
     if (!index.isValid())
         return QVariant();
-
+ 
     // FIXME: Implement me!
     return QVariant();
 }
