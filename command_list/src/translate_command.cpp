@@ -90,8 +90,8 @@ void atomizationCmd_translate::AtomCmdTranslate::set_config(std::string _path) {
 }
 void atomizationCmd_translate::AtomCmdTranslate::addlanguage(std::string _path) {
 	_path = stringCharacterReplace(_path, '\\', "/");
-	languages.processor = _path + "/model/opus-2020-07-17zhen/sentencepiece.model";
-	languages.resprocessor = _path + "/model/opus-2020-07-17enzh/sentencepiece.model";
+	languages.processor = _path + "/model/opus-2020-07-17zhen/source.spm";
+	languages.resprocessor = _path + "/model/opus-2020-07-17enzh/source.spm";
 	languages.Translator = _path + "/model/zhen_ctranslate2";
 	v_languages.push_back(languages);
 	languages.processor = _path + "/model/opus-2020-07-17enzh/source.spm";
