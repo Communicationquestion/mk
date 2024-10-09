@@ -3,7 +3,7 @@ file(GLOB_RECURSE srcs CONFIGURE_DEPENDS src/*.cpp include/*.h)
 add_library(ThirdParty STATIC ${srcs})
 
 
-
+set(CMAKE_PREFIX_PATH "C:\\Qt\\6.7.2/\\msvc2019_64")
 find_package(ctranslate2 REQUIRED)
 target_link_libraries(ThirdParty PUBLIC CTranslate2::ctranslate2)
 
@@ -18,6 +18,7 @@ target_link_libraries(ThirdParty PUBLIC opencv_ml opencv_dnn opencv_core opencv_
 
 
 find_package(cryptopp CONFIG REQUIRED)
+
 target_link_libraries(ThirdParty PUBLIC cryptopp::cryptopp)
 
 

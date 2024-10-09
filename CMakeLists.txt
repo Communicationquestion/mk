@@ -1,4 +1,4 @@
-﻿# CMakeList.txt: 顶层 CMake 项目文件，在此处执行全局配置
+# CMakeList.txt: 顶层 CMake 项目文件，在此处执行全局配置
 # 并包含子项目。
 #
 cmake_minimum_required (VERSION 3.8)
@@ -29,10 +29,15 @@ set(CMAKE_AUTOMOC ON)       # MOC能被自动执行
 set(CMAKE_AUTORCC ON)       # RCC能被自动执行
 add_compile_options("/permissive-")
 add_compile_options("/Zc:__cplusplus")
-#set(DCMAKE_TOOLCHAIN_FILE: $ENV{})
+set(CMAKE_TOOLCHAIN_FILE: "C:\\tp\\vcpkgs\\scripts\\buildsystems\\vcpkg.cmake")
+#include(C:\\tp\\vcpkgs\\scripts\\buildsystems\\vcpkg.cmake)
 
-
-#set(CMAKE_PREFIX_PATH "C:/Qt/6.7.2/msvc2019_64/lib/cmake")
+set(CMAKE_PREFIX_PATH "C:\\Qt\\6.7.2/\\msvc2019_64"
+  "C:\\tp\\vcpkgs\\installed\\x64-windows\\share\\cryptopp"
+  "C:\\tp\\vcpkgs\\installed\\x64-windows\\share\\opencv"
+  "C:\\tp\\vcpkgs\\installed\\x64-windows\\share\\protobuf")
+set(OpenCV_DIR "C:\\tp\\vcpkgs\\installed\\x64-windows\\share\\opencv")
+set(Protobuf_DIR "C:\\tp\\vcpkgs\\installed\\x64-windows\\share\\protobuf")
 project ("mk")
 
 INCLUDE_DIRECTORIES(.\\sentencepiece\\include)
