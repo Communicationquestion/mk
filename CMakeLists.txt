@@ -29,15 +29,17 @@ set(CMAKE_AUTOMOC ON)       # MOC能被自动执行
 set(CMAKE_AUTORCC ON)       # RCC能被自动执行
 add_compile_options("/permissive-")
 add_compile_options("/Zc:__cplusplus")
-set(CMAKE_TOOLCHAIN_FILE: "C:\\tp\\vcpkgs\\scripts\\buildsystems\\vcpkg.cmake")
+set(DCMAKE_TOOLCHAIN_FILE: "C:\\vcpkg\\scripts\\buildsystems\\vcpkg.cmake")
 #include(C:\\tp\\vcpkgs\\scripts\\buildsystems\\vcpkg.cmake)
 
-set(CMAKE_PREFIX_PATH "C:\\Qt\\6.7.2/\\msvc2019_64"
-  "C:\\tp\\vcpkgs\\installed\\x64-windows\\share\\cryptopp"
-  "C:\\tp\\vcpkgs\\installed\\x64-windows\\share\\opencv"
-  "C:\\tp\\vcpkgs\\installed\\x64-windows\\share\\protobuf")
-set(OpenCV_DIR "C:\\tp\\vcpkgs\\installed\\x64-windows\\share\\opencv")
-set(Protobuf_DIR "C:\\tp\\vcpkgs\\installed\\x64-windows\\share\\protobuf")
+set(CMAKE_PREFIX_PATH "C:\\Qt\\6.7.2/\\msvc2019_64" "C:\\vcpkg\\scripts\\buildsystems\\vcpkg.cmake")
+#  "C:\\tp\\vcpkgs\\installed\\x64-windows\\share\\cryptopp"
+#  "C:\\tp\\vcpkgs\\installed\\x64-windows\\share\\opencv"
+#  "C:\\tp\\vcpkgs\\installed\\x64-windows\\share\\protobuf")
+
+#set(OpenCV_DIR "C:\\tp\\vcpkgs\\installed\\x64-windows\\share\\opencv")
+#set(Protobuf_DIR "C:\\tp\\vcpkgs\\installed\\x64-windows\\share\\protobuf")
+
 project ("mk")
 
 INCLUDE_DIRECTORIES(.\\sentencepiece\\include)
@@ -52,6 +54,7 @@ find_package(Qt6 REQUIRED COMPONENTS Core Quick Gui Widgets)
 qt_standard_project_setup(REQUIRES 6.7)
 
 add_subdirectory("ThirdParty/googletest")
+
 # 包含子项目。
 
 add_subdirectory ("mk")
@@ -62,6 +65,7 @@ add_subdirectory ("mk_command")
 add_subdirectory ("Strategy")
 add_subdirectory ("ThirdParty")
 add_subdirectory ("windows")
+add_subdirectory ("ThirdParty/cryptopp-cmake")
 
 # Prevent overriding the parent project's compiler/linker settings on Windows.
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)

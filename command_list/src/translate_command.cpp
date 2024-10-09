@@ -9,8 +9,7 @@ atomizationCmd_translate::AtomCmdTranslate::AtomCmdTranslate(std::string _type) 
 	options.beam_size = 5;               
 	options.length_penalty = 1.0; 
 							
-	options.max_decoding_length = 500;   
-	
+	options.max_decoding_length = 500;
 
 	if ("zhen" == l_type) {
 		target_prefix.push_back({ { "__en__" } });
