@@ -6,8 +6,6 @@ atomizationCmd_translate::AtomCmdTranslate::AtomCmdTranslate(
 	// addlanguage("test");
 	set_config();
 
-
-
 	options.beam_size = 5;
 	options.length_penalty = 1.0;
 
@@ -61,9 +59,7 @@ void atomizationCmd_translate::AtomCmdTranslate::translation(
 
 		vout.push_back(translationSentences(i));
 	}
-
 	output(std::move(vout));
-
 }
 
 void atomizationCmd_translate::AtomCmdTranslate::output(
@@ -83,12 +79,12 @@ std::string atomizationCmd_translate::AtomCmdTranslate::translationSentences(
 	results.clear();
 	res.clear();
 	auto is_invisible_char_except_space = [](unsigned char c) -> bool {
-		return std::iscntrl(c) && c != ' '; 
+		return std::iscntrl(c) && c != ' ';
 	};
 	src.erase(
 		std::remove_if(src.begin(), src.end(), is_invisible_char_except_space),
 		src.end());
-	
+
 	processor.Encode(src, &pieces);
 	if("zhen" == l_type) {
 		pieces.emplace(pieces.begin(), "__zh__");
@@ -109,10 +105,11 @@ std::string atomizationCmd_translate::AtomCmdTranslate::translationSentences(
 	return text;
 }
 void atomizationCmd_translate::AtomCmdTranslate::set_config() {
-	std::string current_paht = getcwd();
-	// std::cout <<"mk in path: "<< current_paht << std::endl;
-	current_paht.erase(current_paht.size() - 7);
-	addlanguage(current_paht);
+	std::filesystem::path currentPath = std::filesystem::current_path();
+	std::string current_path = currentPath.string();
+	
+	current_path.erase(current_path.size() - 7);
+	addlanguage(current_path);
 }
 void atomizationCmd_translate::AtomCmdTranslate::set_config(std::string _path) {
 	addlanguage(_path);
@@ -140,7 +137,7 @@ std::vector<std::string> atomizationCmd_translate::StrPrse::strslice() {
 	return [&]() -> std::vector<std::string> {
 		if("zhen" == l_type) {
 			vstrs = truncateIntoSentencesUtf8(strs, 140);
-		} else {
+		} else if("enzh" == l_type) {
 			vstrs = truncateIntoSentencesUtf8(strs, 240);
 		}
 		return vstrs;

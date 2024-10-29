@@ -1,4 +1,0 @@
-rm -r build
-
-cmake -G "Ninja" -T "host=x64" -DCMAKE_C_COMPILER=cl -DCMAKE_CXX_COMPILER=cl -B build -DCMAKE_TOOLCHAIN_FILE=C:/tp/vcpkgs/scripts/buildsystems/vcpkg.cmake
-cmake .. -G "Ninja" -DCMAKE_C_COMPILER=cl -DCMAKE_CXX_COMPILER=cl

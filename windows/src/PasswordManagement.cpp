@@ -45,7 +45,7 @@ void Qmlmod::Passwd::saveAccount() {
 	key = txtFileKey.toStdString();
 
 	memset(iv, 0x00, CryptoPP::AES::BLOCKSIZE);
-	CryptoPP::CBC_Mode<CryptoPP::AES>::Encryption encryption((byte*)key.c_str(), key.length(), iv);
+	CryptoPP::CBC_Mode<CryptoPP::AES>::Encryption encryption((CryptoPP::byte*)key.c_str(), key.length(), iv);
 	std::string ciphertext{};
 	CryptoPP::StringSource(plaintext, true, new CryptoPP::StreamTransformationFilter(encryption, new CryptoPP::StringSink(ciphertext)));
 
@@ -90,7 +90,7 @@ std::string Qmlmod::Passwd::encipherfile(const std::string&& _path) {
 	std::string ciphertext = uncoded;
 
 	// 解密过程
-	CryptoPP::CBC_Mode<CryptoPP::AES>::Decryption decryption((byte*)key.c_str(), key.length(), iv);
+	CryptoPP::CBC_Mode<CryptoPP::AES>::Decryption decryption( (CryptoPP::byte*)key.c_str(), key.length(), iv);
 	std::string decryptedtext{};
 	CryptoPP::StringSource(ciphertext, true, new CryptoPP::StreamTransformationFilter(decryption, new CryptoPP::StringSink(decryptedtext)));
 

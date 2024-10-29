@@ -19,8 +19,8 @@ int main(int argc, char* argv[])
 	//initqmlapp(argc,argv );
 	std::vector<std::string> v_commands{};
 	if (argc < 2) {
-		//test();
-		printf("error\n");
+		test();
+		//printf("error\n");
 		return 0;
 	}
 	for (int i = 1; i < argc; i++) {

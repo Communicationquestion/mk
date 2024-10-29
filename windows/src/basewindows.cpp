@@ -3,8 +3,6 @@
 #include <QQmlContext>
 #include <basewindows/abmodel.h>
 #include <PasswordManagement/PasswordManagement.h>
-#include <qstring>
-#include <windows.h>
 #include <qguiapplication.h>
 #include <QQmlApplicationEngine>
 
@@ -20,14 +18,11 @@ int initqmlapp(int argc, char* argv[]) {
 	QObject::connect(&engine, &QQmlApplicationEngine::objectCreationFailed,
 		&app, []() { QCoreApplication::exit(-1); },
 		Qt::QueuedConnection);
-	
-	wchar_t buffer[MAX_PATH];
-	GetModuleFileName(NULL, buffer, MAX_PATH);
 
-	QString s = QString::fromWCharArray(buffer);
-	
-	engine.load(s.remove(s.length() - 6, 6).replace("\\","/") + "\\windows\\src\\qmls\\Interactive.qml");
-
+	std::filesystem::path currentPath = std::filesystem::current_path();
+	std::string str = currentPath.string();
+	QString path(str.c_str());
+	engine.load(path + "\\windows\\src\\qmls\\Interactive.qml");
 	return app.exec();
 }
 

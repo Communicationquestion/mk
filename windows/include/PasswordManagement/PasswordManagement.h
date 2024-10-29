@@ -7,6 +7,9 @@
 #include <QFileDialog>
 #include <QString>
 #include <wbg/global.h>
+
+
+
 namespace Qmlmod {
 	struct Account {
 		QString name;
@@ -45,7 +48,7 @@ namespace Qmlmod {
 		std::string encipherfile(const std::string&& _path);
 
 	private:
-		byte iv[CryptoPP::AES::BLOCKSIZE]{0};
+		CryptoPP::byte iv[CryptoPP::AES::BLOCKSIZE]{};
 		Account account_item;
 		CryptoPP::XSalsa20::Encryption en;
 		CryptoPP::XSalsa20::Decryption de;
