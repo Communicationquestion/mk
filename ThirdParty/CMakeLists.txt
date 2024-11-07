@@ -9,6 +9,8 @@ target_link_libraries(ThirdParty PUBLIC Qt6::Core Qt6::Quick Qt6::Gui Qt6::Widge
 
 target_link_libraries(ThirdParty PUBLIC Boost::algorithm Boost::locale)
 target_link_libraries(ThirdParty PUBLIC sentencepiece)
+
+
 target_link_libraries(ThirdParty PUBLIC cryptopp)
 target_link_libraries(ThirdParty PUBLIC gtest)
 
