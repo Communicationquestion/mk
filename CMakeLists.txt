@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 3.8)
 if (POLICY CMP0141)
   cmake_policy(SET CMP0141 NEW)
   set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
-  cmake_policy(SET CMP0071 NEW)
+  
 endif()
 if(MSVC)
     add_compile_options(/utf-8)
@@ -32,14 +32,19 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(cryptopp-cmake)
 
+FetchContent_Declare(
+  Boost
+  URL https://github.com/boostorg/boost/releases/download/boost-1.84.0/boost-1.84.0.tar.xz
+  URL_MD5 893b5203b862eb9bbd08553e24ff146a
+  DOWNLOAD_EXTRACT_TIMESTAMP ON
+)
 
-#INCLUDE_DIRECTORIES(.\\sentencepiece\\include)
+FetchContent_MakeAvailable(Boost)
+
 include_directories(.\\sentencepiece\\include)
 link_directories(.\\sentencepiece\\lib)
 
-#INCLUDE_DIRECTORIES(C:\\boost_1_86_0)
-include_directories(C:\\boost_1_86_0)
-link_directories(C:\\boost_1_86_0\\stage\\lib)
+
 
 find_package(Qt6 REQUIRED COMPONENTS Core Quick Gui Widgets)
 qt_standard_project_setup(REQUIRES 6.7)

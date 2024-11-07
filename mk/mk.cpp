@@ -20,7 +20,7 @@ int main(int argc, char* argv[])
 	std::vector<std::string> v_commands{};
 	if (argc < 2) {
 		test();
-		//printf("error\n");
+		//printf("error\n"); 
 		return 0;
 	}
 	for (int i = 1; i < argc; i++) {
