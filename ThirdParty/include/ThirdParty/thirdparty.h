@@ -1,79 +1,81 @@
 #pragma once
-#include <ctranslate2/translator.h>
-#include <sentencepiece_processor.h>
-#include <qstring.h>
-#include <string.h>
-#include <stdlib.h>
-
 #include <array>
-#include <memory>
-#include <stdexcept>
-#include <iostream>
-#include <cryptopp/cryptlib.h>
-#include <cryptopp/base64.h>
-#include <cryptopp/files.h>
-#include <cryptopp/aes.h> 
-#include <cryptopp/hex.h> 
-#include <cryptopp/modes.h> 
-#include <cryptopp/salsa.h>
-#include <cryptopp/osrng.h>
-#include <cryptopp/secblock.h>
-#include <cryptopp/config.h>
-#include <boost/locale/encoding.hpp>
 #include <boost/algorithm/string.hpp>
-#include <locale>
+#include <boost/locale/encoding.hpp>
+#include <boost/process.hpp>
 #include <codecvt>
-
-int run(const char* cmd);
+#include <cryptopp/aes.h>
+#include <cryptopp/base64.h>
+#include <cryptopp/config.h>
+#include <cryptopp/cryptlib.h>
+#include <cryptopp/files.h>
+#include <cryptopp/hex.h>
+#include <cryptopp/modes.h>
+#include <cryptopp/osrng.h>
+#include <cryptopp/salsa.h>
+#include <cryptopp/secblock.h>
+#include <ctranslate2/translator.h>
+#include <iostream>
+#include <locale>
+#include <memory>
+#include <qstring.h>
+#include <sentencepiece_processor.h>
+#include <stdexcept>
+#include <stdlib.h>
+#include <string.h>
+namespace bp = boost::process;
+int run(const char *cmd);
 void TextTurnsSound(std::string _txt);
 int create_txt(std::string _txtPath, std::string _nameTxt);
-std::string Utf8ToGbk(const char* src_str);
-std::string stringCharacterReplace(std::string str, char _oldch, std::string _newch);
-std::string exec_cmd(const char* cmd);
+std::string Utf8ToGbk(const char *src_str);
+std::string stringCharacterReplace(std::string str, char _oldch,
+                                   std::string _newch);
+std::string exec_cmd(const char *cmd);
 
-inline std::string wstring_to_utf8(const std::wstring& wstr) {
-	std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
-	return converter.to_bytes(wstr);
+inline std::string wstring_to_utf8(const std::wstring &wstr) {
+  std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
+  return converter.to_bytes(wstr);
 }
-inline std::wstring utf8_to_wstring(const std::string& str) {
-	std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
-	return converter.from_bytes(str);
+inline std::wstring utf8_to_wstring(const std::string &str) {
+  std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
+  return converter.from_bytes(str);
 }
-// °´×Ö·û£¨¶ø·Ç×Ö½Ú£©½ØÈ¡×Ö·û´®
-inline std::vector<std::string> truncateIntoSentencesUtf8(const std::string& text, size_t max_len) {
-	std::vector<std::string> sentences;
-	std::wstring wtext = utf8_to_wstring(text);  // ×ª»»Îª¿í×Ö·û
+// æŒ‰å­—ç¬¦ï¼ˆè€Œéå­—èŠ‚ï¼‰æˆªå–å­—ç¬¦ä¸²
+inline std::vector<std::string>
+truncateIntoSentencesUtf8(const std::string &text, size_t max_len) {
+  std::vector<std::string> sentences;
+  std::wstring wtext = utf8_to_wstring(text); // è½¬æ¢ä¸ºå®½å­—ç¬¦
 
-	size_t start = 0;
-	while (start < wtext.length()) {
-		// Èç¹ûÊ£Óà×Ö·ûĞ¡ÓÚµÈÓÚ max_len£¬Ö±½Ó½ØÈ¡
-		if (wtext.length() - start <= max_len) {
-			sentences.push_back(wstring_to_utf8(wtext.substr(start)));
-			break;
-		}
+  size_t start = 0;
+  while (start < wtext.length()) {
+    // å¦‚æœå‰©ä½™å­—ç¬¦å°äºç­‰äº max_lenï¼Œç›´æ¥æˆªå–
+    if (wtext.length() - start <= max_len) {
+      sentences.push_back(wstring_to_utf8(wtext.substr(start)));
+      break;
+    }
 
-		// ²éÕÒÔÚµ±Ç°·¶Î§ÄÚ×îºóÒ»¸ö¾äºÅ£¨¡£»ò.£©
-		size_t pos = wtext.find_last_of(L"¡£.", start + max_len);
-		if (pos == std::wstring::npos || pos < start) {
-			// Èç¹ûÃ»ÓĞÕÒµ½¾äºÅ£¬Ö±½Ó½ØÈ¡ max_len ³¤¶ÈµÄ×Ö·û
-			size_t pos2 = wtext.find_last_of(L"£¬", start + max_len);
-			if (pos2 == std::wstring::npos || pos2 < start) {
-				sentences.push_back(wstring_to_utf8(wtext.substr(start, max_len)));
-				start += max_len; // ¸üĞÂÆğÊ¼Î»ÖÃ
-			}
-			else {
+    // æŸ¥æ‰¾åœ¨å½“å‰èŒƒå›´å†…æœ€åä¸€ä¸ªå¥å·ï¼ˆã€‚æˆ–.ï¼‰
+    size_t pos = wtext.find_last_of(L"ã€‚.", start + max_len);
+    if (pos == std::wstring::npos || pos < start) {
+      // å¦‚æœæ²¡æœ‰æ‰¾åˆ°å¥å·ï¼Œç›´æ¥æˆªå– max_len é•¿åº¦çš„å­—ç¬¦
+      size_t pos2 = wtext.find_last_of(L"ï¼Œ", start + max_len);
+      if (pos2 == std::wstring::npos || pos2 < start) {
+        sentences.push_back(wstring_to_utf8(wtext.substr(start, max_len)));
+        start += max_len; // æ›´æ–°èµ·å§‹ä½ç½®
+      } else {
 
-				sentences.push_back(wstring_to_utf8(wtext.substr(start, pos2 - start + 1)));
-				start = pos2 + 1; // ¸üĞÂÆğÊ¼Î»ÖÃ
-			}
+        sentences.push_back(
+            wstring_to_utf8(wtext.substr(start, pos2 - start + 1)));
+        start = pos2 + 1; // æ›´æ–°èµ·å§‹ä½ç½®
+      }
 
-		}
-		else {
-			// ÕÒµ½¾äºÅ£¬½ØÈ¡µ½¾äºÅÎ»ÖÃ
-			sentences.push_back(wstring_to_utf8(wtext.substr(start, pos - start + 1)));
-			start = pos + 1; // Ìø¹ı¾äºÅ£¬¼ÌĞø´¦Àí
-		}
-	}
+    } else {
+      // æ‰¾åˆ°å¥å·ï¼Œæˆªå–åˆ°å¥å·ä½ç½®
+      sentences.push_back(
+          wstring_to_utf8(wtext.substr(start, pos - start + 1)));
+      start = pos + 1; // è·³è¿‡å¥å·ï¼Œç»§ç»­å¤„ç†
+    }
+  }
 
-	return sentences;
+  return sentences;
 }

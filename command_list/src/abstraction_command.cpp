@@ -1,3 +1,4 @@
+#include <cstring>
 #include<abstraction_command/abstraction_command.h>
 
 int AbsCommand::Abs_Command::run_cmd(const char* cmd)
@@ -9,7 +10,7 @@ int AbsCommand::Abs_Command::run_cmd(const char* cmd)
 	{
 		return -1;
 	}
-	if ((fp = _popen(cmd, "r")) == NULL)
+	if ((fp = popen(cmd, "r")) == NULL)
 	{
 		return -2;
 	}
@@ -24,7 +25,7 @@ int AbsCommand::Abs_Command::run_cmd(const char* cmd)
 		}
 
 		//关闭执行的进程
-		if (_pclose(fp) == -1)
+		if (pclose(fp) == -1)
 		{
 			return -3;
 		}

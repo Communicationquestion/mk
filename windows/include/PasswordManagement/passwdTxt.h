@@ -1,6 +1,7 @@
 #pragma once
 #include<iostream>
 #include<string>
+#include <sstream>
 #include<vector>
 #include<qstring.h>
 namespace edtxt {
@@ -10,10 +11,11 @@ namespace edtxt {
 		void txttoitem(std::string&& str, std::vector<T>& vec) {
 			std::string token;
 			std::istringstream tokenStream(str);
-			while (std::getline(tokenStream, token, '\n')) {
-				vec.push_back(itemtostruct(std::move(token)));
+			while (std::getline(tokenStream, token)) {
+				if (!token.empty()) {  // Skip empty lines
+					vec.push_back(itemtostruct(std::move(token)));
+				}
 			}
-			return;
 		}
 
 		T itemtostruct(std::string&& line) {

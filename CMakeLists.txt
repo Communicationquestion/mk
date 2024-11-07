@@ -14,7 +14,6 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_AUTOUIC ON)      
 set(CMAKE_AUTOMOC ON)       
 set(CMAKE_AUTORCC ON)      
@@ -32,14 +31,14 @@ FetchContent_Declare(
 )
 FetchContent_MakeAvailable(cryptopp-cmake)
 
+FetchContent_Declare(
+  Boost
+  URL https://github.com/boostorg/boost/releases/download/boost-1.84.0/boost-1.84.0.tar.xz
+  URL_MD5 893b5203b862eb9bbd08553e24ff146a
+  DOWNLOAD_EXTRACT_TIMESTAMP ON
+)
 
-#INCLUDE_DIRECTORIES(.\\sentencepiece\\include)
-include_directories(.\\sentencepiece\\include)
-link_directories(.\\sentencepiece\\lib)
-
-#INCLUDE_DIRECTORIES(C:\\boost_1_86_0)
-include_directories(C:\\boost_1_86_0)
-link_directories(C:\\boost_1_86_0\\stage\\lib)
+FetchContent_MakeAvailable(Boost)
 
 find_package(Qt6 REQUIRED COMPONENTS Core Quick Gui Widgets)
 qt_standard_project_setup(REQUIRES 6.7)
@@ -56,6 +55,7 @@ add_subdirectory ("mk_command")
 add_subdirectory ("Strategy")
 add_subdirectory ("ThirdParty")
 add_subdirectory ("windows")
+add_subdirectory ("sentencepiece")
 
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 set(install_gtest OFF)

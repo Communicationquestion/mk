@@ -33,16 +33,23 @@ int run(const char* cmd) {
 }
 
 std::string exec_cmd(const char* cmd) {
-	std::array<char, 128> buffer;
-	std::string result;
-	std::shared_ptr<FILE> pipe(_popen(cmd, "r"), _pclose);
-	if (!pipe) {
-		throw std::runtime_error("popen() failed!");
+	std::string line;
+	try {
+		bp::ipstream pipe_stream; // 用于捕获输出
+		bp::child c(cmd, bp::std_out > pipe_stream); // 在 Unix/Linux 上
+		// bp::child c("dir", bp::std_out > pipe_stream); // 在 Windows 上
+
+
+		while (pipe_stream && std::getline(pipe_stream, line) && !line.empty()) {
+			std::cout << line << std::endl; // 输出命令结果
+		}
+
+		c.wait(); // 等待进程结束
+		std::cout << "Command executed successfully." << std::endl;
+	} catch (const std::exception &e) {
+		std::cerr << "Error: " << e.what() << std::endl;
 	}
-	while (fgets(buffer.data(), buffer.size(), pipe.get()) != nullptr) {
-		result += buffer.data();
-	}
-	return result;
+	return  line;
 }
 void TextTurnsSound(std::string _txt)
 {
