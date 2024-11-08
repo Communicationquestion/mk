@@ -37,7 +37,7 @@ FetchContent_Declare(
   URL_MD5 893b5203b862eb9bbd08553e24ff146a
   DOWNLOAD_EXTRACT_TIMESTAMP ON
 )
-
+set(BOOST_INCLUDE_LIBRARIES algorithm locale process)
 FetchContent_MakeAvailable(Boost)
 
 
