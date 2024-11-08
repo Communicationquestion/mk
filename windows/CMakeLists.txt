@@ -1,5 +1,7 @@
 file(GLOB_RECURSE srcs CONFIGURE_DEPENDS src/*.cpp  include/*.h)
-
+set(CMAKE_AUTOUIC ON)      
+set(CMAKE_AUTOMOC ON)       
+set(CMAKE_AUTORCC ON)  
 #add_library(windows STATIC ${srcs})
 
 #target_include_directories(windows PUBLIC include)

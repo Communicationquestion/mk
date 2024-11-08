@@ -40,10 +40,17 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(Boost)
 
+
+
+FetchContent_Declare(
+  sentencepiece
+  GIT_REPOSITORY https://github.com/google/sentencepiece.git
+)
+FetchContent_MakeAvailable(sentencepiece)
+
 find_package(Qt6 REQUIRED COMPONENTS Core Quick Gui Widgets)
 qt_standard_project_setup(REQUIRES 6.7)
 
-add_subdirectory("ThirdParty/googletest")
 
 # 包含子项目。
 
@@ -55,9 +62,4 @@ add_subdirectory ("mk_command")
 add_subdirectory ("Strategy")
 add_subdirectory ("ThirdParty")
 add_subdirectory ("windows")
-add_subdirectory ("sentencepiece")
 
-set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
-set(install_gtest OFF)
-set(install_gmock OFF)
-set(build_gmock ON)

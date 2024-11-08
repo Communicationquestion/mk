@@ -3,32 +3,40 @@
 
 int AbsCommand::Abs_Command::run_cmd(const char* cmd)
 {
-	char MsgBuff[1024];
-	int MsgLen = 1020;
-	FILE* fp;
-	if (cmd == NULL)
-	{
-		return -1;
-	}
-	if ((fp = popen(cmd, "r")) == NULL)
-	{
-		return -2;
-	}
-	else
-	{
-		memset(MsgBuff, 0, MsgLen);
+    if(cmd == nullptr) {
+        return -1;
+    }
 
-		//读取命令执行过程中的输出
-		while (fgets(MsgBuff, MsgLen, fp) != NULL)
-		{
-			printf("MsgBuff: %s\n", MsgBuff);
-		}
+    FILE* fp = nullptr;
+    char MsgBuff[1024];
+    int MsgLen = sizeof(MsgBuff);
 
-		//关闭执行的进程
-		if (pclose(fp) == -1)
-		{
-			return -3;
-		}
-	}
-	return 0;
+#ifdef _WIN32
+    // Windows specific code
+    fp = _popen(cmd, "r");
+#else
+    // Unix-like systems
+    fp = popen(cmd, "r");
+#endif
+
+    if(fp == nullptr) {
+        return -2;
+    }
+
+    // Read and print output
+    while(fgets(MsgBuff, MsgLen, fp) != nullptr) {
+        printf("MsgBuff: %s\n", MsgBuff);
+    }
+
+#ifdef _WIN32
+    if(_pclose(fp) == -1) {
+        return -3;
+    }
+#else
+    if(pclose(fp) == -1) {
+        return -3;
+    }
+#endif
+
+    return 0;
 }

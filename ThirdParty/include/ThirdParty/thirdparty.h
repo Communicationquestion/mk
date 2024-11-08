@@ -19,7 +19,8 @@
 #include <locale>
 #include <memory>
 #include <qstring.h>
-#include <sentencepiece_processor.h>
+#include <../sentencepiece-src/src/sentencepiece_processor.h>
+
 #include <stdexcept>
 #include <stdlib.h>
 #include <string.h>
