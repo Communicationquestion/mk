@@ -19,11 +19,11 @@
 #include <locale>
 #include <memory>
 #include <qstring.h>
-#include <../sentencepiece-src/src/sentencepiece_processor.h>
-
+#include <ThirdParty/sentencepiece_processor.h>
 #include <stdexcept>
 #include <stdlib.h>
 #include <string.h>
+
 namespace bp = boost::process;
 int run(const char *cmd);
 void TextTurnsSound(std::string _txt);

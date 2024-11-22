@@ -23,13 +23,11 @@ set(CMAKE_AUTORCC ON)
 
 project ("mk")
 
+
+
+
 include(FetchContent)
 
-FetchContent_Declare(
-  cryptopp-cmake
-  GIT_REPOSITORY https://github.com/abdes/cryptopp-cmake.git
-)
-FetchContent_MakeAvailable(cryptopp-cmake)
 
 FetchContent_Declare(
   Boost
@@ -46,8 +44,18 @@ FetchContent_Declare(
   sentencepiece
   GIT_REPOSITORY https://github.com/google/sentencepiece.git
 )
+
+
+
 FetchContent_MakeAvailable(sentencepiece)
 
+FetchContent_Declare(
+  googletest
+  URL https://github.com/google/googletest/archive/03597a01ee50ed33e9dfd640b249b4be3799d395.zip
+)
+# For Windows: Prevent overriding the parent project's compiler/linker settings
+set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+FetchContent_MakeAvailable(googletest)
 find_package(Qt6 REQUIRED COMPONENTS Core Quick Gui Widgets)
 qt_standard_project_setup(REQUIRES 6.7)
 
@@ -62,4 +70,5 @@ add_subdirectory ("mk_command")
 add_subdirectory ("Strategy")
 add_subdirectory ("ThirdParty")
 add_subdirectory ("windows")
+add_subdirectory ("test")
 

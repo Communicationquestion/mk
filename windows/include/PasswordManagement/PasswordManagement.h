@@ -1,14 +1,12 @@
 #pragma once
-#include<PasswordManagement/passwdTxt.h>
-#include<QObject>
-#include<QDebug>
-#include<ThirdParty/thirdparty.h>
-#include<abstraction_create/abstraction_create.h>
+#include <PasswordManagement/passwdTxt.h>
+#include <QObject>
+#include <QDebug>
+#include <ThirdParty/thirdparty.h>
+#include <abstraction_create/abstraction_create.h>
 #include <QFileDialog>
 #include <QString>
 #include <wbg/global.h>
-
-
 
 namespace Qmlmod {
 	struct Account {

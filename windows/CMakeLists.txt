@@ -1,15 +1,6 @@
 file(GLOB_RECURSE srcs CONFIGURE_DEPENDS src/*.cpp  include/*.h)
-set(CMAKE_AUTOUIC ON)      
-set(CMAKE_AUTOMOC ON)       
-set(CMAKE_AUTORCC ON)  
-#add_library(windows STATIC ${srcs})
-
-#target_include_directories(windows PUBLIC include)
 add_library(windows STATIC ${srcs} )
-
 target_include_directories(windows PUBLIC include)
-
-
 
 file(GLOB_RECURSE QSOURCES CONFIGURE_DEPENDS ${CMAKE_SOURCE_DIR}/src/*.cpp)
 file(GLOB_RECURSE HEADERS CONFIGURE_DEPENDS ${CMAKE_SOURCE_DIR}/include/*.h)
@@ -28,7 +19,6 @@ qt_add_qml_module(windows
          src/qmls/txtfileitem.qml
 
     RESOURCES
-    
 )
 target_link_libraries( windows PUBLIC ThirdParty)
 target_link_libraries( windows PUBLIC create_file)
