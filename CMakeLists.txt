@@ -23,11 +23,7 @@ set(CMAKE_AUTORCC ON)
 
 project ("mk")
 
-
-
-
 include(FetchContent)
-
 
 FetchContent_Declare(
   Boost
@@ -38,14 +34,10 @@ FetchContent_Declare(
 set(BOOST_INCLUDE_LIBRARIES algorithm locale process)
 FetchContent_MakeAvailable(Boost)
 
-
-
 FetchContent_Declare(
   sentencepiece
   GIT_REPOSITORY https://github.com/google/sentencepiece.git
 )
-
-
 
 FetchContent_MakeAvailable(sentencepiece)
 
