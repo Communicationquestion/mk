@@ -21,12 +21,9 @@ add_custom_command(
     COMMENT "Copying test.jpg to output directory"
 )
 
-
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET mk PROPERTY CXX_STANDARD 17)
 endif()
-
-
 
 target_link_libraries( test PUBLIC GTest::gtest GTest::gtest_main)
 

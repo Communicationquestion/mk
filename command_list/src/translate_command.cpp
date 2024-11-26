@@ -1,14 +1,14 @@
 #include <translate_command/translate_command.h>
 #include <boost/locale/encoding.hpp>
 #include <boost/process.hpp>
-atomizationCmd_translate::AtomCmdTranslate::AtomCmdTranslate(std::string _type) {
-	l_type = _type;
-	// addlanguage("test");
-	set_config();
+atomizationCmd_translate::AtomCmdTranslate::AtomCmdTranslate(std::string _type) :l_type(_type) {
+
+
+	get_model_root();
+
 
 	options.beam_size = 5;
 	options.length_penalty = 1.0;
-
 	options.max_decoding_length = 500;
 
 	if("zhen" == l_type) {
@@ -17,11 +17,11 @@ atomizationCmd_translate::AtomCmdTranslate::AtomCmdTranslate(std::string _type) 
 		target_prefix.push_back({{"zh_CN"}});
 	}
 
-	if(_type == "zhen") {
+	if(l_type == "zhen") {
 		languages.processor = v_languages.at(0).processor;
 		languages.resprocessor = v_languages.at(0).resprocessor;
 		languages.Translator = v_languages.at(0).Translator;
-	} else if(_type == "enzh") {
+	} else if(l_type == "enzh") {
 		languages.processor = v_languages.at(1).processor;
 		languages.resprocessor = v_languages.at(1).resprocessor;
 		languages.Translator = v_languages.at(1).Translator;
@@ -34,21 +34,25 @@ atomizationCmd_translate::AtomCmdTranslate::AtomCmdTranslate(std::string _type) 
 	const auto status = processor.Load(languages.processor);
 	if(!status.ok()) {
 		std::cerr << status.ToString() << std::endl;
-
-
 	}
 
-	const auto resstatus = resprocessor.Load(
-		languages.resprocessor);
+	const auto resstatus = resprocessor.Load(languages.resprocessor);
 	if(!resstatus.ok()) {
 		std::cerr << resstatus.ToString() << std::endl;
-		// error
 	}
 
-	translator = new ctranslate2::Translator(languages.Translator ,ctranslate2::Device::CPU);
-	
-}
+	set_ctranslate2();
 
+}
+void atomizationCmd_translate::AtomCmdTranslate::set_processor_languages() {
+
+
+
+}
+int atomizationCmd_translate::AtomCmdTranslate::set_ctranslate2(ctranslate2::Device _device) {
+	translator = new ctranslate2::Translator(languages.Translator, _device);
+	return 0;
+}
 void atomizationCmd_translate::AtomCmdTranslate::translation(
 	std::string _input) {
 
@@ -61,6 +65,8 @@ void atomizationCmd_translate::AtomCmdTranslate::translation(
 	}
 	output(std::move(vout));
 }
+
+
 
 void atomizationCmd_translate::AtomCmdTranslate::output(
 	std::vector<std::string>&& _output) {
@@ -103,19 +109,16 @@ std::string atomizationCmd_translate::AtomCmdTranslate::translationSentences(
 
 	return text;
 }
-void atomizationCmd_translate::AtomCmdTranslate::set_config() {
+void atomizationCmd_translate::AtomCmdTranslate::get_model_root() {
 	std::filesystem::path currentPath = std::filesystem::current_path();
 	std::string current_path = currentPath.string();
-
-	
-
 	addlanguage(current_path);
 }
-void atomizationCmd_translate::AtomCmdTranslate::set_config(std::string _path) {
+void atomizationCmd_translate::AtomCmdTranslate::get_model_root(std::string _path) {
 	addlanguage(_path);
 }
 void atomizationCmd_translate::AtomCmdTranslate::addlanguage(std::string _path) {
-	
+
 	_path = stringCharacterReplace(_path, '\\', "/");
 	//std::cout << _path << std::endl;
 	languages.processor = _path + "/model/opus-2020-07-17zhen/source.spm";

@@ -27,15 +27,18 @@ namespace atomizationCmd_translate {
 		~AtomCmdTranslate();
 		void translation(std::string _input);
 		void addlanguage(std::string _disk_path);
-		void set_config(std::string _path);
-		void set_config();
+		void get_model_root(std::string _path);
+		void get_model_root();
 		void output(std::vector<std::string> &&_output);
 		std::string translationSentences(std::string &src);
-
+		int set_ctranslate2(ctranslate2::Device _device = ctranslate2::Device::CPU);
+		void set_processor_languages();
+		
 
 	private: 
-
+		std::map<std::string, std::string>  processor_map;
 		Get_Path path;
+
 
 		std::string type; 
 

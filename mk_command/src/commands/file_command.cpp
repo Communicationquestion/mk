@@ -8,13 +8,13 @@ int FileCreate::MkRun()
 
 int FileCreate::MkRun(std::string _receive_commands)
 {
-	create_project::CreateProject test;
+	create_project::CreateProject Project;
 
-	test.creta_files(_receive_commands);
+	Project.creta_files(_receive_commands);
 
-	CreateModule::Create_Module modeule_test;
+	CreateModule::Create_Module modeule_Project;
 
-	modeule_test.creta_files(_receive_commands + "\\" + _receive_commands,"project");
+	modeule_Project.creta_files(_receive_commands + "\\" + _receive_commands,"project");
 
 	return 0;
 }

@@ -9,6 +9,7 @@ public:
 private:
 
 };
+
 class FileAdd : public CommonCommand::CCommonCommand
 {
 public:

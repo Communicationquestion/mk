@@ -6,6 +6,8 @@ project_path::project_path abstraction_create::Abs_create::set_project_path(std:
 
 	ProjectPath.set_path(_file, "CMakeLists.txt");
 
+
+
 	ProjectPath.print_path();
 
 	return ProjectPath;
