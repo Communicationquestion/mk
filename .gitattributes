@@ -3,6 +3,7 @@
 ###############################################################################
 * text=auto
 CMakeLists.txt merge=ours
+conanfile.txt merge=ours
 *.cmake merge=ours
 ###############################################################################
 # Set default behavior for command prompt diff.

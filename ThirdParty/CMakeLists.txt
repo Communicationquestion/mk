@@ -12,13 +12,9 @@ target_link_libraries(ThirdParty PUBLIC Qt6::Core Qt6::Quick Qt6::Gui Qt6::Widge
 
 
 
+
 find_package(OpenCV REQUIRED)
 target_link_libraries(ThirdParty PUBLIC ${OpenCV_LIBS})
-
-
-target_link_libraries(ThirdParty PUBLIC sentencepiece)
-target_link_libraries(ThirdParty PUBLIC Boost::algorithm Boost::locale Boost::process)
-
 
 target_include_directories(ThirdParty PUBLIC include )
 
