@@ -1,6 +1,4 @@
-#pragma once
 #include<ThirdParty/thirdparty.h>
-
 std::string stringCharacterReplace(std::string str, char _oldch,
 	std::string _newch) {
 	std::string res{};

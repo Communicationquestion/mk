@@ -1,4 +1,6 @@
-#include<abstraction_path/Abs_Path.h>  
+#include<abstraction_path/Abs_Path.h>
+#include <iostream>
+#include <filesystem>
 void abstraction_path::Abs_path::set_file_path(std::string _file_path)
 {
 	file_path = get_current_path() + "\\" + _file_path;
