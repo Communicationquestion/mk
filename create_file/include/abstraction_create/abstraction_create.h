@@ -1,10 +1,7 @@
 #pragma once
 #include<project_path/project_path.h>
 #include<module_path/module_path.h>
-#include <stdio.h>
 #include <string>
-#include <string.h>
-#include <iostream>
 #ifdef _WIN32
 #include <direct.h>		//for mkdir rmdir
 #include <io.h>			//for access
@@ -23,7 +20,7 @@
 #define MKDIR(a) mkdir((a),0755)
 #define RMDIR(a) rmdir((a))
 #endif
- 
+
 namespace abstraction_create {
 	class Abs_create
 	{
@@ -34,6 +31,7 @@ namespace abstraction_create {
 		int create_txt(std::string _txtPath, std::string _nameTxt);
 		int create_txt(std::string _txtPath );
 		int create_cmaketxt(std::string _cmakePath, std::string _txt);
+
 		project_path::project_path set_project_path(std::string _file);
 
 		module_path::ModulePath  set_module_Path(std::string _file_path);
@@ -44,7 +42,6 @@ namespace abstraction_create {
 
 	private:
 		project_path::project_path ProjectPath;
-
 		module_path::ModulePath  ModulePath;
 	};
 

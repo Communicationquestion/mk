@@ -1,5 +1,5 @@
 #include<module_path/module_path.h>
-
+#include <iostream>
 int module_path::ModulePath::set_path(std::string _file_path, std::string _CMake_path)
 {
 	set_file_path(_file_path);

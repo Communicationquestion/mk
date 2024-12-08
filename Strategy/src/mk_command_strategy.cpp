@@ -5,6 +5,8 @@
 #include<commands/translate_command.h>
 #include<commands/passwd_set.h>
 #include <boost/locale/encoding.hpp>
+#include <commands/add_command.h>
+#include <commands/new_command.h>
 int MkCommandStrategy::CMKCommandStrategy::execute(std::vector<std::string> v_command)
 {
 
@@ -57,6 +59,10 @@ void MkCommandStrategy::CMKCommandStrategy::initmap()
 	}
 	else if (cmdtype == "passwd") {
 		add("passwd", new MKRUN::PasswdSet);
+	}else if (cmdtype == "nnew") {
+		add("nnew",new NewCommand);
+	}else if (cmdtype == "nadd") {
+		add("nadd",new AddCommand);
 	}
 	//add("trsconfig", new TranslateCommand("zhen"));
 	//add("te",new tran);

@@ -1,4 +1,3 @@
-#pragma once
 #include <basewindows/abmodel.h>
 #include <wbg/global.h>
 MyListModel::MyListModel(QObject *parent) : QAbstractListModel(parent) {}

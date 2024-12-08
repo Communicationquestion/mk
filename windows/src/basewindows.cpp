@@ -1,4 +1,3 @@
-#pragma once
 #include <basewindows/basewindows.h>
 #include <QQmlContext>
 #include <basewindows/abmodel.h>
@@ -22,7 +21,6 @@ int initqmlapp(int argc, char* argv[]) {
 	std::filesystem::path currentPath = std::filesystem::current_path();
 	std::string str = currentPath.string();
 	QString path(str.c_str());
-	engine.load(path + "\\windows\\src\\qmls\\Interactive.qml");
+	engine.load(QDir::toNativeSeparators(path + "\\windows\\src\\qmls\\Interactive.qml"));
 	return app.exec();
 }
-

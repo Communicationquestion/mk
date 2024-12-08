@@ -1,4 +1,3 @@
-#pragma once
 #include<PasswordManagement/PasswordManagement.h>
 #include<iostream>
 std::vector<Account>* myenv = new std::vector<Account>;
