@@ -6,9 +6,11 @@ if (POLICY CMP0141)
 endif()
 if (MSVC)
     add_compile_options(/Zc:preprocessor /utf-8 /DNOMINMAX /D_USE_MATH_DEFINES /EHsc /bigobj)
+    add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/source-charset:utf-8>")
+    add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/execution-charset:utf-8>")
 elseif()
     if (WIN32)
-        add_compile_options(-finput-charset=utf-8 -fexec-charset=utf-8)
+        
     endif()
     add_compile_options(-Wall -Wextra -Werror=return-type)
 endif()
@@ -19,12 +21,6 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-set(CMAKE_AUTOUIC ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
-
-#add_compile_options("/permissive-")
-#add_compile_options("/Zc:__cplusplus")
 
 project ("mk")
 
@@ -60,11 +56,9 @@ FetchContent_MakeAvailable(googletest)
 
 add_subdirectory ("mk")
 add_subdirectory ("path")
-add_subdirectory ("create_file")
 add_subdirectory ("command_list")
 add_subdirectory ("mk_command")
 add_subdirectory ("Strategy")
 add_subdirectory ("ThirdParty")
-
 add_subdirectory ("test")
 add_subdirectory ("MkGui")

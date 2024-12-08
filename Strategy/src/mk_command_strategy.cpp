@@ -1,9 +1,9 @@
 #include<mk_command_strategy/mk_command_strategy.h>
 #include<commands/cmake_command.h>
-#include<commands/file_command.h>
+
 #include<commands/gcc_command.h>
 #include<commands/translate_command.h>
-#include<commands/passwd_set.h>
+
 #include <boost/locale/encoding.hpp>
 #include <commands/add_command.h>
 #include <commands/new_command.h>
@@ -40,11 +40,11 @@ void MkCommandStrategy::CMKCommandStrategy::initmap()
 	//add("cmake", new CmakeCommand);
 	if (cmdtype == "new") {
 
-		add("new", new FileCreate);
+		add("new", new NewCommand);
 	}
 	else if (cmdtype == "add")
 	{
-		add("add", new FileAdd);
+		add("add", new AddCommand);
 	}
 	else if (cmdtype == "grun")
 	{
@@ -57,14 +57,6 @@ void MkCommandStrategy::CMKCommandStrategy::initmap()
 	{
 		add("enzh", new TranslateCommand("enzh"));
 	}
-	else if (cmdtype == "passwd") {
-		add("passwd", new MKRUN::PasswdSet);
-	}else if (cmdtype == "nnew") {
-		add("nnew",new NewCommand);
-	}else if (cmdtype == "nadd") {
-		add("nadd",new AddCommand);
-	}
-	//add("trsconfig", new TranslateCommand("zhen"));
-	//add("te",new tran);
+	
 
 }

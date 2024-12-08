@@ -2,8 +2,7 @@
 #include<iostream>
 #include<ThirdParty/thirdparty.h>
 #include<abstraction_command/abstraction_command.h>
-#include<abstraction_path/Abs_Path.h>
-  
+#include <template_path/template_path.h> 
 
 namespace atomizationCmd_translate { 
 
@@ -13,11 +12,7 @@ namespace atomizationCmd_translate {
 		std::string resprocessor;
 		std::string Translator;
 	};
-	class Get_Path : public abstraction_path::Abs_path {
-		int set_path(std::string _file_path, std::string _CMake_path) {
-			return 0;
-		}
-	};
+
 
 	class AtomCmdTranslate : public AbsCommand::Abs_Command
 	{
@@ -37,7 +32,7 @@ namespace atomizationCmd_translate {
 
 	private: 
 		std::map<std::string, std::string>  processor_map;
-		Get_Path path;
+		template_path::Template_Path<fs::path, std::string> paths;
 
 
 		std::string type; 

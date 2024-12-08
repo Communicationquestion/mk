@@ -7,4 +7,4 @@ add_library(command_list STATIC ${srcs})
 target_link_libraries( command_list PUBLIC ThirdParty)
 target_include_directories(command_list PUBLIC include)
 target_link_libraries( command_list PUBLIC path)
-target_link_libraries( command_list PUBLIC windows)
+

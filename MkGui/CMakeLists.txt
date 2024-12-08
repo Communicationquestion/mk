@@ -3,7 +3,7 @@ add_library(MkGui STATIC ${srcs})
 find_package(glfw3 REQUIRED)
 target_link_libraries(MkGui PUBLIC glfw)
 target_include_directories(MkGui PUBLIC
-    ${PROJECT_SOURCE_DIR}/MkGui/include/imgui/backends
-     ${PROJECT_SOURCE_DIR}/MkGui/include/glad/include
+    ${PROJECT_SOURCE_DIR}/MkGui/include/imgui
+   
 )
 target_include_directories(MkGui PUBLIC include)

@@ -14,7 +14,9 @@ namespace template_path {
     class Template_Path {
     public:
         fs::path get_current_path() { return fs::current_path(); };
-
+		fs::path get_path() {
+			return return fs::current_path();
+		}
         template<typename PathType>
         void create_file(const PathType &path, const std::string _txt, bool is_directory = true) {
             try {
@@ -27,7 +29,7 @@ namespace template_path {
                     return;
                 }
                 if (!is_directory) {
-                    // 创建文件并写入内容
+  
                     std::ofstream file(path);
                     if (file.is_open()) {
                         file << _txt;
@@ -42,13 +44,13 @@ namespace template_path {
         }
         bool createDirectory(const fs::path& directory) {
             try {
-                // 递归地创建目录
+          
                 if (fs::create_directories(directory)) {
                     std::cout << "Directory created successfully: " << directory << std::endl;
                     return true;
                 } else {
                     std::cout << "Directory already exists: " << directory << std::endl;
-                    return false;  // 目录已经存在
+                    return false;  
                 }
             } catch (const fs::filesystem_error& e) {
                 std::cerr << "Filesystem error: " << e.what() << std::endl;
@@ -56,7 +58,7 @@ namespace template_path {
                 std::cerr << "General error: " << e.what() << std::endl;
             }
 
-            return false;  // 如果发生异常，返回 false
+            return false; 
         }
         using pathtype = std::variant<Types...>;
 
@@ -83,7 +85,7 @@ namespace template_path {
             throw std::runtime_error("Field not found or type mismatch");
         }
 
-        // 遍历并打印所有字段
+   
         void print_paths() const {
             for (const auto &[name, value]: paths) {
                 std::cout << name << ": ";
@@ -92,6 +94,6 @@ namespace template_path {
         }
 
     private:
-        std::unordered_map<std::string, pathtype> paths; // 动态键值表
+        std::unordered_map<std::string, pathtype> paths; 
     };
 } // namespace abstraction_path
