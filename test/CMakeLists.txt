@@ -9,6 +9,8 @@ if(NOT EXE_OUTPUT_DIR)
     set(EXE_OUTPUT_DIR $<TARGET_FILE_DIR:test>)
 endif()
 
+
+
 # 定义复制资源文件夹的命令
 add_custom_command(
     TARGET test POST_BUILD

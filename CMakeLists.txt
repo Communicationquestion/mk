@@ -1,9 +1,5 @@
 cmake_minimum_required (VERSION 3.8)
-if (POLICY CMP0141)
-  cmake_policy(SET CMP0141 NEW)
-  set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
-  cmake_policy(SET CMP0071 NEW)
-endif()
+
 if (MSVC)
     add_compile_options(/Zc:preprocessor /utf-8 /DNOMINMAX /D_USE_MATH_DEFINES /EHsc /bigobj)
     add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/source-charset:utf-8>")
@@ -14,7 +10,15 @@ elseif()
     endif()
     add_compile_options(-Wall -Wextra -Werror=return-type)
 endif()
-cmake_policy(SET CMP0071 NEW)
+
+if(POLICY CMP0135)
+  cmake_policy(SET CMP0135 NEW)
+endif()
+set(FETCHCONTENT_UPDATES_DISCONNECTED ON CACHE BOOL "Disable FetchContent updates for faster builds")
+set(FETCHCONTENT_QUIET OFF CACHE BOOL "Enable verbose output from FetchContent")
+
+# Set the DOWNLOAD_EXTRACT_TIMESTAMP option to TRUE
+set(FETCHCONTENT_DOWNLOAD_EXTRACT_TIMESTAMP TRUE)
 
 
 set(CMAKE_CXX_STANDARD 17)
@@ -28,11 +32,11 @@ include(FetchContent)
 
 FetchContent_Declare(
   Boost
-  URL https://github.com/boostorg/boost/releases/download/boost-1.84.0/boost-1.84.0.tar.xz
-  URL_MD5 893b5203b862eb9bbd08553e24ff146a
-  DOWNLOAD_EXTRACT_TIMESTAMP ON
+  URL https://github.com/boostorg/boost/releases/download/boost-1.86.0/boost-1.86.0-cmake.tar.xz
+  
+#  DOWNLOAD_EXTRACT_TIMESTAMP ON
 )
-set(BOOST_INCLUDE_LIBRARIES algorithm locale process)
+#set(BOOST_INCLUDE_LIBRARIES algorithm locale process stacktrace )
 FetchContent_MakeAvailable(Boost)
 
 FetchContent_Declare(
@@ -62,3 +66,4 @@ add_subdirectory ("Strategy")
 add_subdirectory ("ThirdParty")
 add_subdirectory ("test")
 add_subdirectory ("MkGui")
+add_subdirectory ("tools")
