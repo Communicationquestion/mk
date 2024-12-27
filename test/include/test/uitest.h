@@ -5,7 +5,6 @@
 #include <MkGui/customcontrol.h>
 
 class ui1 {
-
 	public:
 		std::optional<std::string> run() {
 			return	m_testwin.run();
@@ -13,7 +12,6 @@ class ui1 {
 	private:
 	windowui<> m_testwin;
 };
-
 class TestApp {
 	public:
 	TestApp();
@@ -21,5 +19,4 @@ class TestApp {
 	void app_run();
 	private:
 	ui1 m_testui;
-
 };
