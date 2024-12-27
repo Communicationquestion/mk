@@ -2,6 +2,19 @@
 # 项目特定的逻辑。
 #
 
+
+
+if(MSVC)
+    add_compile_options(/Zc:preprocessor /utf-8 /DNOMINMAX /D_USE_MATH_DEFINES /EHsc /bigobj)
+    add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/source-charset:utf-8>")
+    add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/execution-charset:utf-8>")
+    #message("use msvc")
+else()
+    add_compile_options(-Wall -Wextra -Werror=return-type)
+    #message("msvc is not found")
+endif()
+
+
 # 将源代码添加到此项目的可执行文件。
 add_executable (mk "mk.cpp" "main.h")
 
@@ -10,11 +23,9 @@ if (CMAKE_VERSION VERSION_GREATER 3.12)
 endif()
 
 
-
 target_link_libraries( mk PUBLIC path)
-
 target_link_libraries( mk PUBLIC command_list)
-target_link_libraries( mk PUBLIC Strategy)
+target_link_libraries( mk PUBLIC designmode)
 target_link_libraries( mk PUBLIC ThirdParty)
 
 

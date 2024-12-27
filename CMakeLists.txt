@@ -1,19 +1,8 @@
 cmake_minimum_required (VERSION 3.8)
-
-if (MSVC)
-    add_compile_options(/Zc:preprocessor /utf-8 /DNOMINMAX /D_USE_MATH_DEFINES /EHsc /bigobj)
-    add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/source-charset:utf-8>")
-    add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/execution-charset:utf-8>")
-elseif()
-    if (WIN32)
-        
-    endif()
-    add_compile_options(-Wall -Wextra -Werror=return-type)
-endif()
-
 if(POLICY CMP0135)
   cmake_policy(SET CMP0135 NEW)
 endif()
+
 set(FETCHCONTENT_UPDATES_DISCONNECTED ON CACHE BOOL "Disable FetchContent updates for faster builds")
 set(FETCHCONTENT_QUIET OFF CACHE BOOL "Enable verbose output from FetchContent")
 
@@ -53,16 +42,13 @@ FetchContent_Declare(
 
 set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
 FetchContent_MakeAvailable(googletest)
-
-
-
 # 包含子项目。
 
 add_subdirectory ("mk")
 add_subdirectory ("path")
 add_subdirectory ("command_list")
 add_subdirectory ("mk_command")
-add_subdirectory ("Strategy")
+add_subdirectory ("designmode")
 add_subdirectory ("ThirdParty")
 add_subdirectory ("test")
 add_subdirectory ("MkGui")

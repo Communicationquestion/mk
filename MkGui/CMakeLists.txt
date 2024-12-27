@@ -12,7 +12,7 @@ if(MSVC)
     target_link_directories(MkGui PUBLIC $ENV{VK_SDK_PATH}\\lib)
     message("-- VK_SDK_PATH is $ENV{VK_SDK_PATH}")
 else()
-    message("-- VK_SDK_PATH is $ENV{VK_SDK_PATH}")
+    message("-- VK_SDK_PATH empty")
 endif()
 
 

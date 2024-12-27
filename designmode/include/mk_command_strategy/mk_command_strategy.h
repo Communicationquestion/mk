@@ -1,5 +1,5 @@
 #pragma once
-#include<abstraction_strategy/abstraction_strategy.h>
+#include<designmode/abstraction_strategy/abstraction_strategy.h>
 #include<vector>
 namespace MkCommandStrategy {
 	class CMKCommandStrategy :public AbsStratety::CAbsStratry

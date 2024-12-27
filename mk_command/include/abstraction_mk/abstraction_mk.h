@@ -7,7 +7,7 @@ namespace AbstractionMk {
 	{
 	public:
 		//virtual int explain_command(std::string _recive_string) = 0;
-
+	virtual ~CAbstractionMk() = default;
 	private:
 
 	};

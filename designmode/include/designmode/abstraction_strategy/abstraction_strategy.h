@@ -13,6 +13,7 @@ namespace AbsStratety {
 		std::map < std::string, CommonCommand::CCommonCommand* > getmap();
 		std::vector<std::string> separate(std::string _commands);
 		std::map < std::string, CommonCommand::CCommonCommand* > name_command;
+		virtual ~CAbsStratry() = default;
 	private:
 		std::vector<std::string> commands;
 	};

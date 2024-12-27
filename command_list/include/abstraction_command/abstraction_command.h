@@ -9,6 +9,7 @@ namespace AbsCommand {
 	{
 	public:
 		int run_cmd(const char* cmd);
+
 	private:
 		const char* cmd;
 	};

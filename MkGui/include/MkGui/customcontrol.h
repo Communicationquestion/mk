@@ -4,11 +4,11 @@
 #include<imgui/imgui.h>
 #include<type_traits>
 #include <iostream>
-struct SliderFloat{};
+struct SliderFloat {};
 struct Checkbox {};
-struct InputText{};
+struct InputText {};
 
-template<typename ControlType,typename... DataTypes>
+template<typename ControlType, typename... DataTypes>
 struct Control {};
 
 template<typename... T>
@@ -17,22 +17,19 @@ struct Control<SliderFloat, T...> {
 		float sum = 3;
 		if constexpr (sizeof...(T) > 0) {
 			std::string title = label + std::to_string(sum);
-			ImGui::SliderFloat(title.c_str(),
-							   &sum,
-							   0.0f,
-							   1.0f);
+			//ImGui::SliderFloat(title.c_str(),
+			//				   &sum,
+			//				   0.0f,
+			//				   1.0f);
 		}
-		
 	}
 	static void set_data(T*... values) {
 
 		if constexpr (sizeof...(T) > 0) {
-			
-		}
 
+		}
 	}
 };
-
 
 template<typename...T>
 struct Control<Checkbox, T...> {
@@ -42,7 +39,7 @@ struct Control<Checkbox, T...> {
 		std::cout << "Sum of values for " << label << ":" << sum << std::endl;
 
 		if constexpr (sizeof...(T) > 0) {
-			((std::is_same_v<T, bool> ? ImGui::Checkbox((label + "##" + std::to_string(reinterpret_cast<std::uintptr_t>(values))).c_str(), values):0), ...);
+			((std::is_same_v<T, bool> ? ImGui::Checkbox((label + "##" + std::to_string(reinterpret_cast<std::uintptr_t>(values))).c_str(), values) : 0), ...);
 		}
 	}
 
@@ -60,7 +57,7 @@ struct Control<InputText, T...> {
 	}
 };
 
-template<typename ControlType,typename... DataTypes>
+template<typename ControlType, typename... DataTypes>
 class CustomControl {
 	public:
 	explicit CustomControl(const std::string& label, DataTypes*... data) :label_(label), data_(data...) {}

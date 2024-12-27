@@ -1,4 +1,4 @@
-#include<abstraction_strategy/abstraction_strategy.h>
+#include<designmode/abstraction_strategy/abstraction_strategy.h>
 
 void AbsStratety::CAbsStratry::add(std::string _command, CommonCommand::CCommonCommand* _command_type)
 {
