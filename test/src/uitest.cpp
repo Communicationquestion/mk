@@ -14,11 +14,10 @@ void TestApp::initui() {
 	auto key_inputTxt     = std::make_unique<CustomControl<InputText, std::string>>("key", &std::string("key"));
 
 	//m_testui
-	
-
 }
 
 void TestApp::app_run() {
-	lookerr<std::string ,true>(m_testui.run());
 
+	lookerr<std::string ,true>(m_testui1.run());
+	lookerr<std::string ,true>(m_testui2.run());
 }

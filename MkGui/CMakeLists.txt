@@ -1,4 +1,4 @@
-file(GLOB_RECURSE srcs CONFIGURE_DEPENDS src/*.cpp src/*.c include/*.h  include/*.cpp)
+file(GLOB_RECURSE srcs CONFIGURE_DEPENDS src/*.cpp src/*.c include/*.h )
 add_library(MkGui STATIC ${srcs})
 find_package(glfw3 REQUIRED)
 target_link_libraries(MkGui PUBLIC glfw)

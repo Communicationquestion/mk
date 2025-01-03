@@ -1,4 +1,4 @@
-cmake_minimum_required (VERSION 3.8)
+cmake_minimum_required (VERSION 3.10)
 if(POLICY CMP0135)
   cmake_policy(SET CMP0135 NEW)
 endif()
@@ -9,14 +9,20 @@ set(FETCHCONTENT_QUIET OFF CACHE BOOL "Enable verbose output from FetchContent")
 # Set the DOWNLOAD_EXTRACT_TIMESTAMP option to TRUE
 set(FETCHCONTENT_DOWNLOAD_EXTRACT_TIMESTAMP TRUE)
 
-
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 
-
 project ("mk")
 
+if (MSVC)
+    add_compile_options(/Zc:preprocessor /utf-8 /DNOMINMAX /D_USE_MATH_DEFINES /EHsc /bigobj)
+else()
+    if (WIN32)
+        add_compile_options(-finput-charset=utf-8 -fexec-charset=utf-8)
+    endif()
+    add_compile_options(-Wall -Wextra -Werror=return-type)
+endif()
 include(FetchContent)
 
 FetchContent_Declare(
