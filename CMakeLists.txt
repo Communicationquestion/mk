@@ -27,11 +27,10 @@ include(FetchContent)
 
 FetchContent_Declare(
   Boost
-  URL https://github.com/boostorg/boost/releases/download/boost-1.86.0/boost-1.86.0-cmake.tar.xz
-  
+  URL https://github.com/boostorg/boost/releases/download/boost-1.87.0/boost-1.87.0-cmake.7z
 #  DOWNLOAD_EXTRACT_TIMESTAMP ON
 )
-#set(BOOST_INCLUDE_LIBRARIES algorithm locale process stacktrace )
+#set(BOOST_INCLUDE_LIBRARIES algorithm locale process filesystem stacktrace context)
 FetchContent_MakeAvailable(Boost)
 
 FetchContent_Declare(
