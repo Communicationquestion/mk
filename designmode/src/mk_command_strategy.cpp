@@ -17,12 +17,13 @@ int MkCommandStrategy::CMKCommandStrategy::execute(std::vector<std::string> v_co
 	else if (1 < v_command.size()) {
 		std::string cmd{ v_command.at(1)};
 		
-		for (int i = 3 ; i <= v_command.size();  ++i)
+        for (size_t i = 3 ; i <= v_command.size();  ++i)
 		{
 			cmd = cmd+" "+ v_command.at(i - 1);
 		}
 		//cmd = cmd + v_command.at(i);
 		if(!isUtf8(cmd)) {
+            std::cout<<"cmd is not utf_8"<<"\n";
 			cmd = boost::locale::conv::between(cmd, "UTF-8", "GBK");
 		}
 		//std::cout << "cmd:" << cmd << std::endl;

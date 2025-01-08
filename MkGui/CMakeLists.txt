@@ -3,7 +3,7 @@ add_library(MkGui STATIC ${srcs})
 find_package(glfw3 REQUIRED)
 target_link_libraries(MkGui PUBLIC glfw)
 
-find_package(Assimp REQUIRED)
+find_package(assimp REQUIRED)
 target_link_libraries(MkGui PUBLIC assimp::assimp)
 
 

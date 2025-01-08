@@ -15,7 +15,7 @@ namespace template_path {
     public:
         fs::path get_current_path() { return fs::current_path(); };
 		fs::path get_path() {
-			return return fs::current_path();
+            return fs::current_path();
 		}
         template<typename PathType>
         void create_file(const PathType &path, const std::string _txt, bool is_directory = true) {

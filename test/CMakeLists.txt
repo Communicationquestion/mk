@@ -1,7 +1,9 @@
 file(GLOB_RECURSE srcs CONFIGURE_DEPENDS src/*.cpp include/*.h)
 
+
 enable_testing()
 add_executable (test ${srcs})
+target_link_directories(test PUBLIC include)
 
 # 获取可执行文件的输出目录
 get_target_property(EXE_OUTPUT_DIR test RUNTIME_OUTPUT_DIRECTORY)
@@ -27,7 +29,6 @@ add_custom_command(
 if (CMAKE_VERSION VERSION_GREATER 3.12)
   set_property(TARGET mk PROPERTY CXX_STANDARD 17)
 endif()
-
 
 target_link_libraries( test PUBLIC GTest::gtest GTest::gtest_main)
 target_link_libraries( test PUBLIC path)

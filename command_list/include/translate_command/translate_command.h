@@ -1,5 +1,4 @@
 #pragma once
-#include<iostream>
 #include<ThirdParty/thirdparty.h>
 #include<abstraction_command/abstraction_command.h>
 #include <template_path/template_path.h> 
@@ -57,7 +56,7 @@ namespace atomizationCmd_translate {
 
 	class StrPrse {
 	public:
-		StrPrse(std::string&& str,std::string && _type) :strs(std::move(str)),l_type(_type) {
+        StrPrse(std::string&& str,std::string && _type) :l_type(_type),strs(str){
 			
 		}
 		std::vector<std::string> strslice();
