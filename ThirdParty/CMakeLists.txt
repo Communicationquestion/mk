@@ -18,8 +18,14 @@ target_link_libraries(ThirdParty PUBLIC sentencepiece)
 # (See accompanying file LICENSE_1_0.txt or copy at http://boost.org/LICENSE_1_0.txt)
 
 # This CMake configuration file provides support for find_package(Boost).
+if (MSVC)
+   find_package(Boost 1.87.0 REQUIRED COMPONENTS  locale filesystem PATHS C:/Boost)
+else()
+	 find_package(Boost  REQUIRED COMPONENTS  locale filesystem )
+endif()
 
-target_link_libraries(ThirdParty PUBLIC Boost::algorithm Boost::filesystem Boost::preprocessor Boost::locale Boost::process Boost::stacktrace)
+target_link_libraries(ThirdParty PUBLIC Boost::locale Boost::filesystem Boost::boost )
+#target_link_libraries(ThirdParty PUBLIC Boost::algorithm Boost::filesystem Boost::preprocessor Boost::locale Boost::process Boost::stacktrace)
 
 target_include_directories(ThirdParty PUBLIC include )
 

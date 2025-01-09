@@ -25,13 +25,13 @@ else()
 endif()
 include(FetchContent)
 
-FetchContent_Declare(
-  Boost
-  URL https://github.com/boostorg/boost/releases/download/boost-1.87.0/boost-1.87.0-cmake.7z
+#FetchContent_Declare(
+#  Boost
+#  URL https://github.com/boostorg/boost/releases/download/boost-1.87.0/boost-1.87.0-cmake.7z
 #  DOWNLOAD_EXTRACT_TIMESTAMP ON
-)
+#)
 #set(BOOST_INCLUDE_LIBRARIES algorithm locale process filesystem stacktrace context)
-FetchContent_MakeAvailable(Boost)
+#FetchContent_MakeAvailable(Boost)
 
 FetchContent_Declare(
   sentencepiece
