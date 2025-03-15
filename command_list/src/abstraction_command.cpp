@@ -1,9 +1,8 @@
+#include <abstraction_command/abstraction_command.h>
 #include <cstring>
-#include<abstraction_command/abstraction_command.h>
 
-int AbsCommand::Abs_Command::run_cmd(const char* cmd)
-{
-    if(cmd == nullptr) {
+int AbsCommand::Abs_Command::run_cmd(const char* cmd) {
+    if (cmd == nullptr) {
         return -1;
     }
 
@@ -19,21 +18,21 @@ int AbsCommand::Abs_Command::run_cmd(const char* cmd)
     fp = popen(cmd, "r");
 #endif
 
-    if(fp == nullptr) {
+    if (fp == nullptr) {
         return -2;
     }
 
     // Read and print output
-    while(fgets(MsgBuff, MsgLen, fp) != nullptr) {
+    while (fgets(MsgBuff, MsgLen, fp) != nullptr) {
         printf("MsgBuff: %s\n", MsgBuff);
     }
 
 #ifdef _WIN32
-    if(_pclose(fp) == -1) {
+    if (_pclose(fp) == -1) {
         return -3;
     }
 #else
-    if(pclose(fp) == -1) {
+    if (pclose(fp) == -1) {
         return -3;
     }
 #endif
