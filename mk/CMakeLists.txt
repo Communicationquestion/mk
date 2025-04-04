@@ -4,9 +4,9 @@
 # 将源代码添加到此项目的可执行文件。
 add_executable (mk "mk.cpp" "main.h")
 
-if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET mk PROPERTY CXX_STANDARD 17)
-endif()
+#if (CMAKE_VERSION VERSION_GREATER 3.12)
+#  set_property(TARGET mk PROPERTY CXX_STANDARD 17)
+#endif()
 
 
 target_link_libraries( mk PUBLIC path)
