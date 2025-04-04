@@ -1,3 +1,6 @@
+if(POLICY CMP0167)
+    cmake_policy(SET CMP0167 OLD) # 或者 'NEW' 根据你的具体情况选择
+endif()
 file(GLOB_RECURSE srcs CONFIGURE_DEPENDS src/*.cpp include/*.h)
 add_library(ThirdParty STATIC ${srcs})
 

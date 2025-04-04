@@ -1,13 +1,13 @@
 #pragma once
+#include <MkGui/customcontrol.h>
 #include <iostream>
-#include <vector>
 #include <memory>
 #include <type_traits>
 #include <variant>
-#include <MkGui/customcontrol.h>
+#include <vector>
 
 
-//class LayoutManager {
+// class LayoutManager {
 //
 //
 //	public:
@@ -22,10 +22,10 @@
 //	}
 //	protected:
 //	std::vector < std::shared_ptr < std::variant<CustomControl<>>>> items;
-//};
+// };
 
 
-//int main() {
+// int main() {
 //	// 创建一些控件
 //	auto button1 = std::make_shared<Button>();
 //	auto button2 = std::make_shared<Button>();
@@ -43,4 +43,4 @@
 //	nestedLayout->draw();
 //
 //	return 0;
-//}
+// }
